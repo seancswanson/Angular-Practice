@@ -20,14 +20,14 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', function ($
 //
 //    });
 
-    $timeout(function () {
-
-        //        $scope.$apply(function () {
-        $scope.handle = 'newTwitterHandle';
-        console.log('Scope changed!');
-        //        });
-
-    }, 3000);
+//    $timeout(function () {
+//
+//        //        $scope.$apply(function () {
+//        $scope.handle = 'newTwitterHandle';
+//        console.log('Scope changed!');
+//        //        });
+//
+//    }, 3000);
 
 
 }]);

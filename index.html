@@ -24,9 +24,14 @@
             <input type="text" ng-model="handle">
         </div>
 
-        <h1 class="handle-url">
-            twitter.com/{{ lowercaseHandle() }}
-        </h1>
+        <div class="handle-url" ng-class="{'handle-url-filled': handle !== ''}">
+
+            <h1>twitter.com/{{ lowercaseHandle() }}
+                <div ng-class="{'handle-url-filled_shadow': handle !== ''}"></div>
+            </h1>
+
+
+        </div>
     </main>
 
     <footer></footer>

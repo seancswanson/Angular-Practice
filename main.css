@@ -1,18 +1,54 @@
 body {
+    margin: 0 auto;
     max-width: 900px;
     height: 100vh;
-    margin: 0 auto;
-    text-align: center;
     border-right: 1px dashed rgba(0, 0, 0, .1);
     border-left: 1px dashed rgba(0, 0, 0, .1);
     box-shadow: 0 0 10px .1px rgba(0, 0, 0, .05);
+    text-align: center;
 }
 
 nav {
-    background-color: rgba(0, 0, 0, .05);
     margin-bottom: 30px;
+    background-color: rgba(0, 0, 0, .05);
 }
 
 .handle-url {
+    display: inline-block;
     margin-top: 50px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    text-shadow: none;
+    position: relative;
+    transition: width 1s ease,
+        background-color 1s ease,
+        color .25s ease,
+        border-radius .25s linear;
+}
+
+.handle-url-filled {
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 30px;
+    width: auto;
+    min-width: 50px;
+    background-color: #ffa500;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    transition: width 1s ease, background-color 1s ease, color .25s ease, border-radius .25s linear;
+    box-shadow: 10px 10px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.handle-url-filled_shadow {
+    background-image: url(https://png.pngtree.com/element_our/png/20180918/dotted-line-geometric-pattern-png_92123.jpg);
+    opacity: .1;
+    position: absolute;
+    top: 12.5px;
+    left: 10px;
+    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
