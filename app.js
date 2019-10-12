@@ -4,17 +4,11 @@ var myApp = angular.module('myApp', []);
 
 
 // Controller for view inside of myApp
-myApp.controller('mainController', ['$scope', '$timeout', function ($scope, $timeout) {
+myApp.controller('mainController', ['$scope', '$filter', function ($scope, $filter) {
 
-    console.log($scope);
-    $scope.name = 'Sean';
+    $scope.handle = '';
 
-    // Timeout is another Angular service,
-    // Similar to setTimeout but kept within
-    // the Angular architecture.
-    $timeout(function () {
-
-        $scope.name = 'Everybody';
-
-    }, 3000)
+    $scope.lowercaseHandle = function () {
+        return $filter('lowercase')($scope.handle);
+    };
 }]);
