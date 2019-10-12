@@ -12,13 +12,13 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', function ($
         return $filter('lowercase')($scope.handle);
     };
 
-    $scope.$watch('handle', function (newValue, oldValue) {
-
-        console.warn('Changed!');
-        console.log('Old: ' + oldValue);
-        console.log('New: ' + newValue);
-
-    });
+//    $scope.$watch('handle', function (newValue, oldValue) {
+//
+//        console.warn('Changed!');
+//        console.log('Old: ' + oldValue);
+//        console.log('New: ' + newValue);
+//
+//    });
 
     $timeout(function () {
 
