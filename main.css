@@ -9,19 +9,28 @@ body {
 }
 
 nav {
-    margin-bottom: 30px;
     background-color: rgba(0, 0, 0, .05);
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.alert {
+    margin: 20px auto;
+    width: 50%;
 }
 
 .handle-url {
+    position: relative;
     display: inline-block;
+    max-width: 80%;
+    height: 100px;
     margin-top: 50px;
+    padding: 20px 20px;
     border-radius: 10px;
-    padding: 10px 20px;
     background-color: white;
     color: black;
     text-shadow: none;
-    position: relative;
     transition: width 1s ease,
         background-color 1s ease,
         color .25s ease,
@@ -30,25 +39,36 @@ nav {
 
 .handle-url-filled {
     display: inline-block;
-    padding: 10px 30px;
-    border-radius: 30px;
-    width: auto;
+    padding: 20px 30px;
     min-width: 50px;
+    width: auto;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
     background-color: #ffa500;
     color: white;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     transition: width 1s ease, background-color 1s ease, color .25s ease, border-radius .25s linear;
-    box-shadow: 10px 10px 1px 1px rgba(0, 0, 0, 0.1);
+    /*    box-shadow: 10px 10px 1px 1px rgba(0, 0, 0, 0.1);*/
+}
+
+.handle-url-filled h1 {
+    overflow-x: hidden;
+    box-shadow: 12px 0px 1px 1px rgba(0, 0, 0, 0.1)
 }
 
 .handle-url-filled_shadow {
-    background-image: url(https://png.pngtree.com/element_our/png/20180918/dotted-line-geometric-pattern-png_92123.jpg);
-    opacity: .1;
     position: absolute;
-    top: 12.5px;
+    top: 10px;
     left: 10px;
-    border-radius: 30px;
+    z-index: -1;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    border-radius: 30px;
+    background-image: url(https://www.transparenttextures.com/patterns/black-scales.png);
+    /*    background-image: url(https://www.transparenttextures.com/patterns/black-mamba.png);*/
+    /*    background-image: url(https://www.transparenttextures.com/patterns/black-twill.png);*/
+    /*    background-image: url(https://www.transparenttextures.com/patterns/cartographer.png);*/
+    /*    background-image: url(https://www.transparenttextures.com/patterns/nami.png);*/
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
+    opacity: .2;
 }
