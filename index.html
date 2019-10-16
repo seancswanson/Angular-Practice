@@ -36,6 +36,11 @@
             <div ng-show="handle.length === characters">You have 5 characters!</div>
             <div ng-show="handle.length > characters">You have more than 5 characters!!!</div>
         </div>
+
+        <h4>Rules:</h4>
+        <ul>
+            <li ng-repeat="rule in rules">{{ rule.ruleName }}</li>
+        </ul>
     </main>
 
     <footer></footer>

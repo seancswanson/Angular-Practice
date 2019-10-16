@@ -5,7 +5,6 @@ body {
     border-right: 1px dashed rgba(0, 0, 0, .1);
     border-left: 1px dashed rgba(0, 0, 0, .1);
     box-shadow: 0 0 10px .1px rgba(0, 0, 0, .05);
-    text-align: center;
 }
 
 nav {
@@ -22,15 +21,16 @@ nav {
 
 .handle-url {
     position: relative;
-    display: inline-block;
-    max-width: 80%;
+    display: block;
+    max-width: 500px;
     height: 100px;
-    margin-top: 50px;
+    margin: 50px auto 0 auto;
     padding: 20px 20px;
     border-radius: 10px;
     background-color: white;
     color: black;
     text-shadow: none;
+    text-align: center;
     transition: width 1s ease,
         background-color 1s ease,
         color .25s ease,
@@ -38,7 +38,6 @@ nav {
 }
 
 .handle-url-filled {
-    display: inline-block;
     padding: 20px 30px;
     min-width: 50px;
     width: auto;
@@ -48,12 +47,38 @@ nav {
     color: white;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     transition: width 1s ease, background-color 1s ease, color .25s ease, border-radius .25s linear;
-    /*    box-shadow: 10px 10px 1px 1px rgba(0, 0, 0, 0.1);*/
 }
 
 .handle-url-filled h1 {
     overflow-x: hidden;
-    box-shadow: 12px 0px 1px 1px rgba(0, 0, 0, 0.1)
+}
+
+.handle-url-filled h1:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    width: 10px;
+    height: 50%;
+    transform: translate(0, -50%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.handle-url-filled h1:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 28px;
+    width: 10px;
+    height: 50%;
+    transform: translate(0, -50%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.05) 100%);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .handle-url-filled_shadow {
