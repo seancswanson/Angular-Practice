@@ -19,6 +19,7 @@
 
     <main ng-controller="mainController">
 
+
         <div>
             <label>What is your twitter handler?</label>
             <input type="text" ng-model="handle">
@@ -41,6 +42,15 @@
         <ul>
             <li ng-repeat="rule in rules">{{ rule.ruleName }}</li>
         </ul>
+
+        <img ng-if="dittoSpriteURL.length !== 0" ng-model="dittoSpriteURL" src="{{ dittoSpriteURL }}">
+
+        <!--
+        <input type="button" value="Click Me" ng-click="alertClick()">
+
+<div ng-cloak>{{ name }}</div>
+-->
+
     </main>
 
     <footer></footer>
@@ -48,4 +58,6 @@
 
     <script src="https://code.angularjs.org/1.7.8/angular.min.js" type="text/javascript"></script>
     <script src="app.js" type="text/javascript"></script>
-</body></html>
+</body>
+
+</html>

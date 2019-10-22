@@ -50,7 +50,7 @@ nav {
 }
 
 .handle-url-filled h1 {
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .handle-url-filled h1:before {

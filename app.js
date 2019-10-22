@@ -4,7 +4,7 @@ var myApp = angular.module('myApp', []);
 
 
 // Controller for view inside of myApp
-myApp.controller('mainController', ['$scope', '$filter', '$timeout', function ($scope, $filter, $timeout) {
+myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', function ($scope, $filter, $timeout, $http) {
 
     $scope.handle = '';
 
@@ -18,17 +18,35 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', function ($
 
         {
             ruleName: "Must be 5 characters"
-        },
+            },
         {
             ruleName: "Must not be used elsewhere"
-        },
+            },
         {
             ruleName: "Must be cool"
-        },
+            },
 
-    ];
+        ];
+
+    $http.get('https://pokeapi.co/api/v2/pokemon/ditto/').then(function (result) {
+        $scope.dittoInfo = result.data;
+        $scope.dittoSpriteURL = result.data.sprites.front_default;
+        console.log(result.data.sprites);
+        console.log($scope.dittoSpriteURL);
+    }).catch(function (err) {
+
+        console.error(err); // Try mispelling the API URL to see this response.
+
+    });
 
 
     console.log($scope.rules);
 
-}]);
+    //    $scope.alertClick = () => {
+    //        $scope.name = 'Sean Swanson';
+    //        alert('Clicked!');
+    //    }
+
+
+
+            }]);
