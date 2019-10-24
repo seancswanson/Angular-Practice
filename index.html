@@ -39,17 +39,22 @@
         </div>
 
         <h4>Rules:</h4>
+
         <ul>
             <li ng-repeat="rule in rules">{{ rule.ruleName }}</li>
         </ul>
 
-        <img ng-if="dittoSpriteURL.length !== 0" ng-model="dittoSpriteURL" src="{{ dittoSpriteURL }}">
+        <label>Add rule:</label>
+        <input type="text" ng-model="newRule">
+        <a href="#" class="btn btn-success" ng-click="handleAddRuleClick()">Add</a>
 
-        <!--
-        <input type="button" value="Click Me" ng-click="alertClick()">
+        <div class="ditto-wrapper">
+            <input type="button" value="{{ dittoSpriteURL ? 'You got it!' : 'Click for some Ditto!' }}" ng-click="alertClick()">
 
-<div ng-cloak>{{ name }}</div>
--->
+            <div ng-cloak> <img ng-if="dittoSpriteURL.length !== 0" ng-model="dittoSpriteURL" src="{{ dittoSpriteURL }}"></div>
+        </div>
+
+
 
     </main>
 

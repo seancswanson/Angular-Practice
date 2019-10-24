@@ -28,25 +28,37 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', fu
 
         ];
 
-    $http.get('https://pokeapi.co/api/v2/pokemon/ditto/').then(function (result) {
-        $scope.dittoInfo = result.data;
-        $scope.dittoSpriteURL = result.data.sprites.front_default;
-        console.log(result.data.sprites);
-        console.log($scope.dittoSpriteURL);
-    }).catch(function (err) {
+    $scope.newRule = '';
+    $scope.addRule = () => {
+        let newRuleItem = {
+            ruleName: $scope.newRule
+        };
+        $scope.rules.push(newRuleItem);
+        $scope.newRule = '';
 
-        console.error(err); // Try mispelling the API URL to see this response.
+        console.log($scope.rules);
+    }
 
-    });
+    $scope.handleAddRuleClick = () => {
+        console.log('Rule add:' + $scope.newRule);
 
-
-    console.log($scope.rules);
-
-    //    $scope.alertClick = () => {
-    //        $scope.name = 'Sean Swanson';
-    //        alert('Clicked!');
-    //    }
+        $scope.addRule();
+    }
 
 
+    $scope.alertClick = () => {
+        $scope.name = 'Sean Swanson';
+        //        alert('Clicked!');
+        $http.get('https://pokeapi.co/api/v2/pokemon/ditto/').then(function (result) {
 
-            }]);
+            $scope.dittoInfo = result.data;
+            $scope.dittoSpriteURL = result.data.sprites.front_default;
+
+        }).catch(function (err) {
+
+            console.error(err); // Try mispelling the API URL to see this response.
+
+        });
+    };
+
+}]);
