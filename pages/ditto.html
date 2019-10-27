@@ -1,0 +1,5 @@
+<div class="ditto-wrapper">
+    <input type="button" value="{{ dittoSpriteURL ? 'You got it!' : 'Click for some Ditto!' }}" ng-click="alertClick()">
+
+    <div ng-cloak> <img ng-if="dittoSpriteURL.length !== 0" ng-model="dittoSpriteURL" src="{{ dittoSpriteURL }}"></div>
+</div>
