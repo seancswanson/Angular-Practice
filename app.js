@@ -1,7 +1,20 @@
 // Creates the connection between Angular and the DOM tree
 // Extends the HTML to become an Angular module
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ngRoute']);
 
+myApp.config(function ($routeProvider) {
+
+    $routeProvider
+        .when('/', {
+            templateUrl: 'pages/main.html',
+            controller: 'mainController'
+        })
+        .when('/ditto', {
+            templateUrl: 'pages/ditto.html',
+            controller: 'dittoController'
+        });
+
+})
 
 // Controller for view inside of myApp
 myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', function ($scope, $filter, $timeout, $http) {
@@ -29,6 +42,7 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', fu
         ];
 
     $scope.newRule = '';
+
     $scope.addRule = () => {
         let newRuleItem = {
             ruleName: $scope.newRule
@@ -37,7 +51,7 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', fu
         $scope.newRule = '';
 
         console.log($scope.rules);
-    }
+    };
 
     $scope.handleAddRuleClick = () => {
         console.log('Rule add:' + $scope.newRule);
@@ -45,7 +59,10 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', fu
         $scope.addRule();
     }
 
+}]);
 
+myApp.controller('dittoController', ['$scope', '$http', function ($scope, $http) {
+    console.log($scope);
     $scope.alertClick = () => {
         $scope.name = 'Sean Swanson';
         //        alert('Clicked!');
