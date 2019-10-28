@@ -1,28 +1,28 @@
 <div>
-            <label>What is your twitter handler?</label>
-            <input type="text" ng-model="handle">
-        </div>
+    <h1>This page is for {{ pageName }}</h1>
+    <label>What is your twitter handler?</label>
+    <input type="text" ng-model="handle">
+</div>
 
-        <div class="handle-url" ng-class="{'handle-url-filled': handle !== ''}">
-            <h1>twitter.com/{{ lowercaseHandle() }}
-                <div ng-class="{'handle-url-filled_shadow': handle !== ''}"></div>
-            </h1>
+<div class="handle-url" ng-class="{'handle-url-filled': handle !== ''}">
+    <h1>twitter.com/{{ lowercaseHandle() }}
+        <div ng-class="{'handle-url-filled_shadow': handle !== ''}"></div>
+    </h1>
 
-        </div>
+</div>
 
-        <div class="alert" ng-if="handle.length >= 1" ng-class="{'alert-warning': handle.length <= characters, 'alert-danger': handle.length > characters}">
-            <div ng-show="handle.length < characters">You have less than 5 characters</div>
-            <div ng-show="handle.length === characters">You have 5 characters!</div>
-            <div ng-show="handle.length > characters">You have more than 5 characters!!!</div>
-        </div>
+<div class="alert" ng-if="handle.length >= 1" ng-class="{'alert-warning': handle.length <= characters, 'alert-danger': handle.length > characters}">
+    <div ng-show="handle.length < characters">You have less than 5 characters</div>
+    <div ng-show="handle.length === characters">You have 5 characters!</div>
+    <div ng-show="handle.length > characters">You have more than 5 characters!!!</div>
+</div>
 
-        <h4>Rules:</h4>
+<h4>Rules:</h4>
 
-        <ul>
-            <li ng-repeat="rule in rules">{{ rule.ruleName }}</li>
-        </ul>
+<ul>
+    <li ng-repeat="rule in rules">{{ rule.ruleName }}</li>
+</ul>
 
-        <label>Add rule:</label>
-        <input type="text" ng-model="newRule">
-        <a href="#" class="btn btn-success" ng-click="handleAddRuleClick()">Add</a>
-
+<label>Add rule:</label>
+<input type="text" ng-model="newRule">
+<a href="#" class="btn btn-success" ng-click="handleAddRuleClick()">Add</a>
