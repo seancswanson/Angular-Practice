@@ -1,5 +1,10 @@
 <div>
     <h1>This page is for {{ pageName }}</h1>
+    <div>
+        <h2>Your full name {{ 'is ' + name || 'hasn\'t been defined yet.' }}</h2>
+        <input type="text" ng-model="name" placeholder="Enter your name">
+    </div>
+    <br>
     <label>What is your twitter handler?</label>
     <input type="text" ng-model="handle">
 </div>

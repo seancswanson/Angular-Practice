@@ -22,10 +22,36 @@ myApp.config(function ($routeProvider) {
             controller: 'dittoController'
         });
 
-})
+});
+
+// Creating named services. These are singletons. Good use case for app state storage?
+myApp.service('nameService', function () {
+
+    var self = this;
+    this.name = 'Sean Swanson';
+
+    this.nameLength = function () {
+
+        return self.name.length;
+
+    };
+
+});
 
 // Controller for view inside of myApp
-myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', function ($scope, $filter, $timeout, $http) {
+// $scope is a child scope that inherits from the root scope. New child scope
+// in each controller it is injected into.
+myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', '$log', 'nameService', function ($scope, $filter, $timeout, $http, $log, nameService) {
+
+    $scope.name = nameService.name;
+
+    $scope.$watch('name', function () {
+        nameService.name = $scope.name;
+    });
+
+    $log.log(nameService.name);
+    $log.log(nameService.nameLength());
+
 
     $scope.pageName = 'main';
 
@@ -75,10 +101,20 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', fu
 
     }
 
+    //    // $log is a singleton, this saves on memory.
+    //    $log.main = 'Property from main';
+    //    $log.log($log);
+
 }]);
 
-myApp.controller('dittoController', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+myApp.controller('dittoController', ['$scope', '$http', '$routeParams', '$log', 'nameService', function ($scope, $http, $routeParams, $log, nameService) {
     //    console.log($scope);
+
+    $scope.name = nameService.name;
+
+    $scope.$watch('name', function () {
+        nameService.name = $scope.name;
+    });
 
     $scope.pageName = 'ditto';
 
@@ -99,5 +135,8 @@ myApp.controller('dittoController', ['$scope', '$http', '$routeParams', function
 
         });
     };
+
+    //    $log.second = 'Property from second';
+    //    $log.log($log);
 
 }]);
