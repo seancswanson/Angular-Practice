@@ -11,15 +11,15 @@ myApp.config(function ($routeProvider) {
             controller: 'mainController'
         })
 
-        .when('/ditto/', {
-            templateUrl: 'pages/ditto.html',
-            controller: 'dittoController'
+        .when('/second/', {
+            templateUrl: 'pages/second.html',
+            controller: 'secondController'
         })
 
         // Route parameters get passed to scope with $routeParams.[:value]
-        .when('/ditto/:num', {
-            templateUrl: 'pages/ditto.html',
-            controller: 'dittoController'
+        .when('/second/:num', {
+            templateUrl: 'pages/second.html',
+            controller: 'secondController'
         });
 
 });
@@ -43,100 +43,10 @@ myApp.service('nameService', function () {
 // in each controller it is injected into.
 myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', '$log', 'nameService', function ($scope, $filter, $timeout, $http, $log, nameService) {
 
-    $scope.name = nameService.name;
-
-    $scope.$watch('name', function () {
-        nameService.name = $scope.name;
-    });
-
-    $log.log(nameService.name);
-    $log.log(nameService.nameLength());
-
-
-    $scope.pageName = 'main';
-
-    $scope.handle = '';
-
-    $scope.lowercaseHandle = function () {
-        return $filter('lowercase')($scope.handle);
-    };
-
-    $scope.characters = 5;
-
-    $scope.rules = [
-
-        {
-            ruleName: "Must be 5 characters"
-            },
-        {
-            ruleName: "Must not be used elsewhere"
-            },
-        {
-            ruleName: "Must be cool"
-            },
-
-        ];
-
-    $scope.newRule = '';
-
-    $scope.addRule = () => {
-
-        let newRuleItem = {
-            ruleName: $scope.newRule
-        };
-
-        $scope.rules.push(newRuleItem);
-
-        $scope.newRule = '';
-
-        console.log($scope.rules);
-
-    };
-
-    $scope.handleAddRuleClick = () => {
-
-        console.log('Rule add:' + $scope.newRule);
-
-        $scope.addRule();
-
-    }
-
-    //    // $log is a singleton, this saves on memory.
-    //    $log.main = 'Property from main';
-    //    $log.log($log);
 
 }]);
 
-myApp.controller('dittoController', ['$scope', '$http', '$routeParams', '$log', 'nameService', function ($scope, $http, $routeParams, $log, nameService) {
-    //    console.log($scope);
+myApp.controller('secondController', ['$scope', '$http', '$routeParams', '$log', 'nameService', function ($scope, $http, $routeParams, $log, nameService) {
 
-    $scope.name = nameService.name;
-
-    $scope.$watch('name', function () {
-        nameService.name = $scope.name;
-    });
-
-    $scope.pageName = 'ditto';
-
-    $scope.num = $routeParams.num || 1;
-
-    $scope.getDitto = () => {
-        $scope.name = 'Sean Swanson';
-        //        alert('Clicked!');
-        $http.get('https://pokeapi.co/api/v2/pokemon/ditto/').then(function (result) {
-
-            $scope.dittoInfo = result.data;
-
-            $scope.dittoSpriteURL = result.data.sprites.front_default;
-
-        }).catch(function (err) {
-
-            console.error(err); // Try mispelling the API URL to see this response.
-
-        });
-    };
-
-    //    $log.second = 'Property from second';
-    //    $log.log($log);
 
 }]);
