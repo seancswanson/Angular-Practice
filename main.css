@@ -1,11 +1,14 @@
 body {
     margin: 0 auto;
     max-width: 900px;
-    padding: 10px;
     height: 100vh;
     border-right: 1px dashed rgba(0, 0, 0, .1);
     border-left: 1px dashed rgba(0, 0, 0, .1);
     box-shadow: 0 0 10px .1px rgba(0, 0, 0, .05);
+}
+
+.view-container {
+    padding: 10px;
 }
 
 /*
