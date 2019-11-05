@@ -5,7 +5,5 @@
         <h2>Your full name {{ 'is ' + name || 'hasn\'t been defined yet.' }}</h2>
         <input type="text" ng-model="name" placeholder="Enter your name">
     </div>
-    <input type="button" value="{{ dittoSpriteURL ? 'You got it!' : 'Click for some Ditto!' }}" ng-click="getDitto()">
 
-    <div ng-cloak> <img ng-if="dittoSpriteURL.length !== 0" ng-model="dittoSpriteURL" src="{{ dittoSpriteURL }}"></div>
 </div>
