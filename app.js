@@ -58,14 +58,7 @@ myApp.directive('searchResult', function () {
 
     return {
         restrict: 'AEM', // A === Attribute*, E === Element*, C === Class, M === Comment
-        template: `
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"> Swan,Sean </h5>
-                </div>
-                <p class="mb-1"> A pretty cool guy. </p>
-                <small> 1337 Leet Street Bellevue,WA 98033 </small>
-            </a>`,
+        templateUrl: 'directives/searchresult.html',
         replace: true
     }
 
