@@ -43,6 +43,10 @@ myApp.service('nameService', function () {
 // in each controller it is injected into.
 myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', '$log', 'nameService', function ($scope, $filter, $timeout, $http, $log, nameService) {
 
+    $scope.person = {
+        name: 'Sean',
+        address: '1337 Leet Street Kirkland, WA, 98033'
+    }
 
 }]);
 
@@ -59,7 +63,8 @@ myApp.directive('searchResult', function () {
     return {
         restrict: 'AEM', // A === Attribute*, E === Element*, C === Class, M === Comment
         templateUrl: 'directives/searchresult.html',
-        replace: true
+        replace: true,
+        scope: {}
     }
 
 })
