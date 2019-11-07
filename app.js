@@ -44,7 +44,7 @@ myApp.service('nameService', function () {
 myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', '$log', 'nameService', function ($scope, $filter, $timeout, $http, $log, nameService) {
 
     $scope.person = {
-        name: 'Sean',
+        name: 'Sean Swanson',
         address: '1337 Leet Street Kirkland, WA, 98033'
     }
 
@@ -64,7 +64,12 @@ myApp.directive('searchResult', function () {
         restrict: 'AEM', // A === Attribute*, E === Element*, C === Class, M === Comment
         templateUrl: 'directives/searchresult.html',
         replace: true,
-        scope: {}
+        scope: {
+
+            personName: "@", // Local scope binding, @ === text
+            personAddress: "@"
+
+        }
     }
 
 })
