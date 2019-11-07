@@ -45,7 +45,14 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', '$
 
     $scope.person = {
         name: 'Sean Swanson',
-        address: '1337 Leet Street Kirkland, WA, 98033'
+        address: '1337 Leet Street',
+        city: 'Kirkland',
+        state: 'WA',
+        zipCode: '98033'
+    }
+
+    $scope.formattedAddress = function (person) {
+        return `${person.address}, ${person.city}, ${person.state} ${person.zipCode}`;
     }
 
 }]);
@@ -66,7 +73,8 @@ myApp.directive('searchResult', function () {
         replace: true,
         scope: {
 
-            personObject: "=" // = === object/Two-way binding. Two-way binding can get you in trouble.
+            personObject: "=", // = === object/Two-way binding. Two-way binding can get you in trouble.
+            formattedAddressFunction: "&" // & === a function
 
         }
     }
