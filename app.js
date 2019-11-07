@@ -66,8 +66,7 @@ myApp.directive('searchResult', function () {
         replace: true,
         scope: {
 
-            personName: "@", // Local scope binding, @ === text
-            personAddress: "@"
+            personObject: "=" // = === object/Two-way binding. Two-way binding can get you in trouble.
 
         }
     }
