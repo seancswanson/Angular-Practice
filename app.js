@@ -43,13 +43,27 @@ myApp.service('nameService', function () {
 // in each controller it is injected into.
 myApp.controller('mainController', ['$scope', '$filter', '$timeout', '$http', '$log', 'nameService', function ($scope, $filter, $timeout, $http, $log, nameService) {
 
-    $scope.person = {
-        name: 'Sean Swanson',
-        address: '1337 Leet Street',
-        city: 'Kirkland',
-        state: 'WA',
-        zipCode: '98033'
-    }
+    $scope.people = [{
+            name: 'Sean Swanson',
+            address: '1337 Leet Street',
+            city: 'Kirkland',
+            state: 'WA',
+            zipCode: '98033'
+    },
+        {
+            name: 'Jane Swannyson',
+            address: '4022 Brandywine Ave',
+            city: 'Boston',
+            state: 'MA',
+            zipCode: '73772'
+    },
+        {
+            name: 'John Swanarillo',
+            address: '330 Tenpenny Blvd Apt. A',
+            city: 'Louisville',
+            state: 'KY',
+            zipCode: '34899'
+    }]
 
     $scope.formattedAddress = function (person) {
         return `${person.address}, ${person.city}, ${person.state} ${person.zipCode}`;
