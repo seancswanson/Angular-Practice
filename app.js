@@ -90,36 +90,19 @@ myApp.directive('searchResult', function () {
             personObject: "=", // = === object/Two-way binding. Two-way binding can get you in trouble.
             formattedAddressFunction: "&" // & === a function
         },
-        compile: function (elem, attrs) { // Initializes the directive
+        link: function (scope, elements, attrs) { // on bind... reminds me of componentDidMount.
 
-            // You almost never write code in compile
-            //            console.log('Compiling...');
-            //            //            elem.removeAttr('class')
-            //            console.log(elem);
+            console.log('Linking...')
+            console.log(scope.personObject.name);
 
-            return {
-
-                //                pre: function (scope, elements, attrs) {
-                //
-                //                    console.log('Pre-linking...')
-                //                    console.log(elements);
-                //
-                //                }, 'Not safe' accoring to Angular documentation.
-
-                post: function (scope, elements, attrs) { // on bind
-
-                    console.log('Post-linking...')
-                    console.log(scope.personObject.name);
-
-                    if (scope.personObject.name === 'Jane Swannyson') {
-                        elements.removeAttr('class')
-                    }
-
-                    console.log(elements);
-
-                }
+            if (scope.personObject.name === 'Jane Swannyson') {
+                elements.removeAttr('class')
             }
+
+            console.log(elements);
+
         }
+
     }
 
 })
