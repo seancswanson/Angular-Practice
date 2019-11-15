@@ -4,5 +4,9 @@
 <h3>Search Results</h3>
 
 <div class="list-group">
-    <search-result ng-repeat="person in people" person-object="person" formatted-address-function="formattedAddress(person)"></search-result>
+    <search-result ng-repeat="person in people" person-object="person" formatted-address-function="formattedAddress(person)">
+
+        *This is a transclusion!
+
+    </search-result>
 </div>

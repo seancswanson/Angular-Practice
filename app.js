@@ -90,19 +90,7 @@ myApp.directive('searchResult', function () {
             personObject: "=", // = === object/Two-way binding. Two-way binding can get you in trouble.
             formattedAddressFunction: "&" // & === a function
         },
-        link: function (scope, elements, attrs) { // on bind... reminds me of componentDidMount.
-
-            console.log('Linking...')
-            console.log(scope.personObject.name);
-
-            if (scope.personObject.name === 'Jane Swannyson') {
-                elements.removeAttr('class')
-            }
-
-            console.log(elements);
-
-        }
-
+        transclude: true // Taking a piece of DOM inside the directive, and says where to place it within thedirective.
     }
 
 })
