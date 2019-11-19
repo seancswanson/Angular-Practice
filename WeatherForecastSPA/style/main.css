@@ -66,6 +66,13 @@ body {
         'Apple Color Emoji',
         'Segoe UI Emoji',
         'Segoe UI Symbol';
+    width: 100vw;
+    height: 100vh;
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 0;
+    background: url(home-bg.svg) center center no-repeat;
+    background-size: cover;
 }
 
 /* Grouping content
@@ -295,16 +302,11 @@ summary {
  */
 
 .header-container {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    min-height: 60px;
+    height: 60px;
 }
 
 .navbar {
-    max-width: 900px;
     padding: 10px 0;
-    margin: 0 auto;
     display: flex;
     align-content: space-around;
     z-index: 10;
@@ -318,10 +320,15 @@ summary {
 
 .navbar-brand {
     font-weight: 800;
-    padding: 5px 10px;
     margin-left: 20px;
+    font-size: 35px;
     text-shadow: 0 0 0 0 black;
     border-radius: 10px;
+    color: black;
+    -webkit-text-fill-color: white;
+    /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.3);
 }
 
 .navbar-right {
@@ -341,13 +348,7 @@ summary {
     font-weight: 100;
 }
 
-.home-bg {
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    background: url(home-bg.svg) center center no-repeat;
-    background-size: cover;
-}
+.home-bg {}
 
 .hamburger-container {
     display: none;
@@ -364,7 +365,7 @@ summary {
         position: absolute;
         top: 0;
         right: 0;
-        height: 50vh;
+        height: 340px;
         flex-direction: column;
         align-items: flex-end;
     }

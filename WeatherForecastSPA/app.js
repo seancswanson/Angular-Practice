@@ -3,6 +3,7 @@
 var weatherApp = angular.module('weatherApp', ['ngRoute', 'ngResource']);
 
 weatherApp.config(function ($routeProvider) {
+
     $routeProvider
         .when('/', {
             templateUrl: 'pages/home.html',
@@ -10,11 +11,20 @@ weatherApp.config(function ($routeProvider) {
         })
 
         .when('/forecast', {
-            templateUrl: 'pages/forecast/html',
+            templateUrl: 'pages/forecast.html',
             controller: 'forecastController'
         })
+
+});
+
+weatherApp.service('stateService', function () {
+
+    this.user = {
+        username: 'Sean'
+    }
+
 })
 
-weatherApp.controller('homeController', ['$scope', '$log'], function ($scope, $log) {
-    $log.log($scope);
-}) 
+weatherApp.controller('homeController', ['$scope', '$log', 'stateService'], function ($scope, $log, stateService) {
+    console.log(stateService);
+});
