@@ -308,9 +308,9 @@ summary {
 .navbar {
     padding: 10px 0;
     display: flex;
+    align-items: center;
     align-content: space-around;
     z-index: 10;
-    color: white;
     text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -326,9 +326,8 @@ summary {
     border-radius: 10px;
     color: black;
     -webkit-text-fill-color: white;
-    /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: rgba(0, 0, 0, 0.3);
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.5);
 }
 
 .navbar-right {
@@ -371,7 +370,7 @@ summary {
     }
 
     .navbar-brand {
-        margin-left: 0;
+        margin-left: 10px;
     }
 
     .navbar-link {
