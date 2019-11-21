@@ -322,12 +322,9 @@ summary {
     font-weight: 800;
     margin-left: 20px;
     font-size: 35px;
-    text-shadow: 0 0 0 0 black;
+    text-shadow: 0 0 0 black;
     border-radius: 10px;
     color: black;
-    -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: rgba(0, 0, 0, 0.5);
 }
 
 .navbar-right {
@@ -395,4 +392,37 @@ summary {
         background-size: cover;
         filter: invert();
     }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.forecast--form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    background: white;
+    padding-bottom: 10px;
+}
+
+.forecast--form {
+    padding: 10px;
+}
+
+.button {
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    padding: 10px 15px;
+}
+
+.button--primary {
+    background: rgb(28, 184, 65);
 }
