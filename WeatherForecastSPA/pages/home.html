@@ -1,10 +1,7 @@
-<h1 ng-model="pageName">{{ pageName }}</h1>
-
-
 <div class="forecast--form-container">
     <h2>Forecast by City</h2>
     <div class="forecast--form">
-        <input type="text" class="form-control" placeholder="Seattle, NYC, Chicago..." />
+        <input type="text" class="form-control" placeholder="Seattle, NYC, Chicago..." ng-model="cityName" />
     </div>
-    <a href="#/forecast" class="button button--primary">Get Forecast</a>
+    <a class="button button--primary" ng-click="setCity()">Get Forecast</a>
 </div>
