@@ -1,1 +1,15 @@
 <h1>Forecast for {{ cityName }}</h1>
+
+
+<div class="forecast-results" ng-repeat="weather in weatherResult.list">
+    <div class="forecast-date"> {{ convertToDate(weather.dt) | date: 'short' }}</div>
+    <div class="forecast-weather">{{ weather.weather[0].main }}</div>
+    <div class="forecast-weather">[[ICON]]</div>
+    <div class="forecast-temp-primary">{{ convertToFahrenheit(weather.main.temp) }}</div>
+    <div class="forecast-temp-secondary">
+        <div class="forecast-temp-high">{{ convertToFahrenheit(weather.main.temp_max) }}</div>
+        <div class="forecast-temp-low">{{ convertToFahrenheit(weather.main.temp_min) }}</div>
+    </div>
+
+
+</div>

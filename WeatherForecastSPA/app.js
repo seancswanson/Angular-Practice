@@ -1,3 +1,6 @@
+// 4bdd42e99d3c216e6c5b942b88dbfd15
+// http://api.openweathermap.org/data/2.5/forecast/daily?APPID=
+
 // MODULE
 // Declare what dependencies/services will be used.
 
@@ -26,7 +29,9 @@ weatherApp.service('stateService', function () {
         username: 'Sean'
     }
 
-    this.cityName = null || 'Seattle';
+    this.cityName = 'Seattle';
+
+
 
 })
 
@@ -46,16 +51,45 @@ weatherApp.controller('homeController', ['$scope', '$log', 'stateService', funct
 
     $log.log('scope from Home', $scope);
 
-    $scope.setCity = function () {
+    $scope.cityName = stateService.cityName;
+
+    $scope.$watch('cityName', function () {
         stateService.cityName = $scope.cityName;
         console.log(stateService)
-    }
+    });
 
 }]);
 
-weatherApp.controller('forecastController', ['$scope', '$log', 'stateService', function ($scope, $log, stateService) {
+weatherApp.controller('forecastController', ['$scope', '$log', '$resource', 'stateService', function ($scope, $log, $resource, stateService) {
+
+    let weatherEndpoint = 'http://api.openweathermap.org/data/2.5/forecast';
+
     $log.log('scope from Forecast', $scope);
 
     $scope.cityName = stateService.cityName;
+
+    $scope.weatherAPI = $resource(weatherEndpoint, {
+        callback: "JSON_CALLBACK"
+    }, {
+        get: {
+            method: 'JSONP'
+        }
+    });
+
+    $scope.weatherResult = $scope.weatherAPI.get({
+        q: $scope.cityName,
+        cnt: 7,
+        appid: '4bdd42e99d3c216e6c5b942b88dbfd15'
+    });
+
+    $scope.convertToFahrenheit = function (degK) {
+        return Math.round((1.8 * (degK - 273)) + 32);
+    }
+
+    $scope.convertToDate = function (dt) {
+
+        return new Date(dt * 1000);
+
+    }
 
 }]);
