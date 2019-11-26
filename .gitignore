@@ -2,6 +2,7 @@
 # https://help.github.com/articles/ignoring-files
 # Example .gitignore files: https://github.com/github/gitignore
 .DS_STORE
+WeatherForecastSPA/.DS_Store
 /bower_components/
 /node_modules/
-WeatherForecastSPA/style/
+WeatherForecastSPA/style/css
