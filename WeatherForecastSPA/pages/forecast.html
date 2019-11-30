@@ -1,15 +1,22 @@
-<h1>Forecast for {{ cityName }}</h1>
+<h1>Trihoral Forecast by City</h1>
+<h2>{{ cityName }}</h2>
+
+<div class="forecast-results-container">
+    <div class="forecast-results results-table-view" ng-repeat="weather in weatherResult.list">
+        <div class="forecast-left">
+            <div class="forecast-day-month"> {{ convertToDate(weather.dt) | date: 'd MMM' }}</div>
+            <div class="forecast-year"> '{{ convertToDate(weather.dt) | date: 'yy' }}</div>
+            <div class="forecast-time"> {{ convertToDate(weather.dt) | date: 'h a' }}</div>
+            <div class="forecast-day-of-week"> {{ convertToDate(weather.dt) | date: 'EEE' }}</div>
+        </div>
+        <div class="forecast-weather">{{ weather.weather[0].main }}</div>
+        <div class="forecast-weather">[[ICON]]</div>
+        <div class="forecast-temp-primary">{{ convertToFahrenheit(weather.main.temp) }}</div>
+        <div class="forecast-temp-secondary">
+            <div class="forecast-temp-high">{{ convertToFahrenheit(weather.main.temp_max) }}</div>
+            <div class="forecast-temp-low">{{ convertToFahrenheit(weather.main.temp_min) }}</div>
+        </div>
 
 
-<div class="forecast-results" ng-repeat="weather in weatherResult.list">
-    <div class="forecast-date"> {{ convertToDate(weather.dt) | date: 'short' }}</div>
-    <div class="forecast-weather">{{ weather.weather[0].main }}</div>
-    <div class="forecast-weather">[[ICON]]</div>
-    <div class="forecast-temp-primary">{{ convertToFahrenheit(weather.main.temp) }}</div>
-    <div class="forecast-temp-secondary">
-        <div class="forecast-temp-high">{{ convertToFahrenheit(weather.main.temp_max) }}</div>
-        <div class="forecast-temp-low">{{ convertToFahrenheit(weather.main.temp_min) }}</div>
     </div>
-
-
 </div>

@@ -1,10 +1,41 @@
 // out: ../css/home.css, compress: true, strictMath: true
-/home.css, compress: true, strictMath: true
 
 .home-container {
     display: grid;
-    grid-auto-columns: auto;
-    grid-auto-rows: auto auto auto;
-    width: 50%;
-    justify-items: center;
-}
+
+    color: #333;
+
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    justify-items: left;
+    align-items: center;
+
+    .input-container {
+        display: grid;
+
+        width: auto;
+        margin-left: 1em;
+
+        input {
+            font-size: 50px;
+
+            display: block;
+
+            width: 100%;
+            min-width: 300px;
+            height: auto;
+            padding-top: 10px;
+
+            color: #333;
+            border: none;
+            border-bottom: 4px solid #333;
+            outline: none;
+            background: rgba(255, 255, 255, 0);
+            }
+        }
+
+    .button {
+        margin-top: 1em;
+        margin-left: 1em;
+        }
+    }
