@@ -1,0 +1,38 @@
+// out: ../../dist/style/app.css, compress: true, strictMath: true
+@import (less) '../css/navbar.css';
+@import (less) '../css/home.css';
+@import (less) '../css/forecast.css';
+@import (less) '../css/buttons.css';
+@import (less) '../css/normalize.css';
+
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  z-index: 0;
+
+  display: grid;
+
+  height: 100%;
+  margin: 0 auto;
+
+  background: url('https://www.transparenttextures.com/patterns/60-lines.png')
+    center center repeat;
+  background-color: rgba(0, 232, 155, 0.6);
+  // background-image: url(../../style/home-bg.svg),
+  //   url('https://www.transparenttextures.com/patterns/60-lines.png');
+  // background-repeat: no-repeat, repeat;
+  // background-position: center center, center center;
+  // background-size: cover, 5%;
+
+  grid-auto-columns: auto;
+  grid-auto-rows: 50px 1fr;
+}
+
+main {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
