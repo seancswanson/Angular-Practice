@@ -1,11 +1,13 @@
 <div class="home-container">
-  <div class="map"></div>
-  <h2 ng-model="currentLocation">
+  <div class="map-container" ng-controller="mapController">
+    <leaflet id="map"></leaflet>
+  </div>
+  <!-- <h2 ng-model="currentLocation">
     It looks like you are located at {{ currentLocation.latitude }}
   </h2>
-  <div ng-click="getCurrentLocation()">Get it!</div>
-  <h1>Show me the weather for...</h1>
+  <div ng-click="getCurrentLocation()">Get it!</div> -->
 
+  <h1>Show me the weather for...</h1>
   <div class="input-container">
     <input
       type="text"

@@ -3,6 +3,7 @@
 # Example .gitignore files: https://github.com/github/gitignore
 .DS_STORE
 WeatherForecastSPA/.DS_Store
+WeatherForecastSPA/node_modules/
 /bower_components/
 /node_modules/
 WeatherForecastSPA/style/css
