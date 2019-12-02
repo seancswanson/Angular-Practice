@@ -7,17 +7,20 @@
   </h2>
   <div ng-click="getCurrentLocation()">Get it!</div> -->
 
-  <h1>Show me the weather for...</h1>
-  <div class="input-container">
-    <input
-      type="text"
-      class="location-input"
-      placeholder="Seattle, NYC, Chicago..."
-      ng-model="cityName"
-    />
+  <div class="input-container container">
+    <div class="top">
+      <h1>Show me the weather for...</h1>
+      <input
+        type="text"
+        class="location-input"
+        placeholder="Seattle, NYC, Chicago..."
+        ng-model="cityName"
+      />
+    </div>
+    <div class="bottom">
+      <a href="#/forecast" class="button button--primary" ng-click="setCity()"
+        >Get Forecast</a
+      >
+    </div>
   </div>
-
-  <a href="#/forecast" class="button button--primary" ng-click="setCity()"
-    >Get Forecast</a
-  >
 </div>

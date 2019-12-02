@@ -75,6 +75,14 @@ weatherApp.directive('navbar', function() {
     };
 });
 
+weatherApp.directive('footer', function() {
+    return {
+        replace: 'E',
+        templateUrl: 'web/directives/footer.html',
+        replace: true,
+    };
+});
+
 // CONTROLLERS
 
 weatherApp.controller('homeController', [

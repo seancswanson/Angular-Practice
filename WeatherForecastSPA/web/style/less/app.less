@@ -1,5 +1,6 @@
 // out: ../../dist/style/app.css, compress: true, strictMath: true
 @import (less) '../css/navbar.css';
+@import (less) '../css/footer.css';
 @import (less) '../css/home.css';
 @import (less) '../css/forecast.css';
 @import (less) '../css/buttons.css';
@@ -35,4 +36,14 @@ main {
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
+}
+
+.container {
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid white;
+  border-radius: 2px;
+  padding: 0.5em;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
 }
