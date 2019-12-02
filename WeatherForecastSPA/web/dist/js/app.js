@@ -153,6 +153,11 @@ weatherApp.controller('mapController', [
     '$scope',
     function($scope) {
         angular.extend($scope, {
+            center: {
+                lat: 47.60917214635615,
+                lng: -122.25311279296876,
+                zoom: 12
+            },
             defaults: {
                 scrollWheelZoom: false,
             },

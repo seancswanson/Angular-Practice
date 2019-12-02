@@ -1,6 +1,15 @@
-<h1 class="page-heading container">Trihoral Forecast by City</h1>
-<h2>{{ cityName }}</h2>
+<h1 class="page-heading">Trihoral Forecast for {{ cityName }}</h1>
 
+<div class="view-toggle-container">
+  <div class="button table-view selected">
+    <div class="table-icon view-icon"></div>
+    <div class="table-label">Table View</div>
+  </div>
+  <div class="button grid-view">
+    <div class="grid-icon view-icon"></div>
+    <div class="grid-label">Grid View</div>
+  </div>
+</div>
 <div class="forecast-results-container container">
   <div
     class="forecast-results results-table-view"

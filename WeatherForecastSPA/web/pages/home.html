@@ -1,6 +1,12 @@
 <div class="home-container">
-  <div class="map-container" ng-controller="mapController">
-    <leaflet id="map"></leaflet>
+  <div class="map-container container" ng-controller="mapController">
+    <form>
+      Latitude :
+      <input type="number" step="any" ng-model="center.lat" /> Longitude :
+      <input type="number" step="any" ng-model="center.lng" /> Zoom :
+      <input type="number" step="any" ng-model="center.zoom" />
+    </form>
+    <leaflet id="map" center="center"></leaflet>
   </div>
   <!-- <h2 ng-model="currentLocation">
     It looks like you are located at {{ currentLocation.latitude }}

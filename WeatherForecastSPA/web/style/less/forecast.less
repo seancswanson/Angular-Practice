@@ -1,5 +1,77 @@
 // out: ../css/forecast.css, compress: true, strictMath: true
+
 .page-heading {
+  padding: 0;
+  margin: 0;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid white;
+  border-radius: 2px;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+}
+
+.view-toggle-container {
+  display: flex;
+  height: auto;
+
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid white;
+  border-radius: 2px;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+  width: 25%;
+
+  .view-icon {
+    height: 50px;
+  }
+
+  .table-view {
+    .view-icon {
+      background: url(table-view.png) center center no-repeat;
+    }
+
+    .view-label {
+    }
+  }
+
+  grid-view {
+    .view-icon {
+      background: url(grid-view.png) center center no-repeat;
+    }
+
+    .view-label {
+    }
+  }
+
+  .button {
+    color: #333;
+    font-size: 11px;
+    flex: 1;
+    border: 1px dotted transparent;
+    transition: all cubic-bezier(0.311, 0.441, 0.444, 1.1) 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid rgba(0, 0, 0, 0.4);
+    }
+
+    &:not(.selected) {
+    }
+
+    &.selected {
+      border: 1px dotted rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        border: 1px dotted rgba(0, 0, 0, 0.6);
+        cursor: initial;
+      }
+    }
+  }
 }
 
 .forecast-results-container {
