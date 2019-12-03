@@ -1,185 +1,232 @@
 // out: ../css/forecast.css, compress: true, strictMath: true
 
 .page-heading {
-  padding: 0;
-  margin: 0;
-  background: rgba(255, 255, 255, 1);
-  border: 1px solid white;
-  border-radius: 2px;
-  padding: 0.5rem;
-  margin-top: 1rem;
-  width: 100%;
-  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-    0 15px 40px rgba(166, 173, 201, 0.2);
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    background: white;
+    border: 1px solid white;
+    border-radius: 2px;
+    padding: 0.5rem;
+    padding-right: 0.6;
+    margin-top: 1rem;
+    width: auto;
+    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+        0 15px 40px rgba(166, 173, 201, 0.2);
 }
 
 .view-toggle-container {
-  display: flex;
-  height: auto;
+    display: flex;
+    height: auto;
 
-  background: rgba(255, 255, 255, 1);
-  border: 1px solid white;
-  border-radius: 2px;
-  padding: 0.5rem;
-  margin-top: 1rem;
-  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-    0 15px 40px rgba(166, 173, 201, 0.2);
-  width: 25%;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid white;
+    border-radius: 2px;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+        0 15px 40px rgba(166, 173, 201, 0.2);
+    width: 25%;
 
-  .view-icon {
-    height: 50px;
-  }
-
-  .table-view {
     .view-icon {
-      background: url(table-view.png) center center no-repeat;
+        height: 50px;
     }
 
-    .view-label {
+    .button {
+        color: #333;
+        font-size: 11px;
+        flex: 1;
+        border: 1px dotted transparent;
+        transition: all cubic-bezier(0.311, 0.441, 0.444, 1.1) 0.3s;
+        cursor: pointer;
+
+        &.table-view {
+            .view-icon {
+                background: url(table-view.png) center center no-repeat;
+            }
+
+            .view-label {}
+        }
+
+        &.grid-view {
+            .view-icon {
+                background: url(grid-view.png) center center no-repeat;
+            }
+
+            .view-label {}
+        }
+
+        &:hover {
+            border: 1px solid rgba(0, 0, 0, 0.4);
+        }
+
+        &:not(.selected) {}
+
+        &.selected {
+            border: 1px dotted rgba(0, 0, 0, 0.3);
+
+            &:hover {
+                border: 1px dotted rgba(0, 0, 0, 0.6);
+                cursor: initial;
+            }
+        }
     }
-  }
-
-  grid-view {
-    .view-icon {
-      background: url(grid-view.png) center center no-repeat;
-    }
-
-    .view-label {
-    }
-  }
-
-  .button {
-    color: #333;
-    font-size: 11px;
-    flex: 1;
-    border: 1px dotted transparent;
-    transition: all cubic-bezier(0.311, 0.441, 0.444, 1.1) 0.3s;
-    cursor: pointer;
-
-    &:hover {
-      border: 1px solid rgba(0, 0, 0, 0.4);
-    }
-
-    &:not(.selected) {
-    }
-
-    &.selected {
-      border: 1px dotted rgba(0, 0, 0, 0.3);
-
-      &:hover {
-        border: 1px dotted rgba(0, 0, 0, 0.6);
-        cursor: initial;
-      }
-    }
-  }
 }
 
 .forecast-results-container {
-  display: flex;
-  flex-direction: column;
-
-  width: 100%;
-  padding: 0.5em;
-
-  .forecast-results {
     display: flex;
+    flex-direction: column;
 
-    padding: 0.5em 1em;
+    width: 100%;
+    padding: 0.5em;
 
-    // border-top: 2px solid rgba(0, 0, 0, 0.7);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    background-color: whitesmoke;
-
-    justify-content: space-between;
-    align-items: center;
-
-    &:not(:first-of-type) {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-      border-top: none;
+    .forecast-loader,
+    .forecast-loader:after {
+        border-radius: 50%;
+        width: 5em;
+        height: 5em;
     }
 
-    &:last-of-type {
-      border-top: none;
-      border-bottom: none;
-    }
-
-    &.results-table-view {
-      .forecast-left {
+    .forecast-loader {
+        margin: 60px auto;
         font-size: 10px;
+        position: relative;
+        text-indent: -9999em;
+        border-top: 1.1em solid rgba(0, 232, 155, 0.7);
+        border-right: 1.1em solid rgba(0, 232, 155, 0.7);
+        border-bottom: 1.1em solid rgba(0, 232, 155, 0.7);
+        border-left: 1.1em solid #ffffff;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-animation: load8 1.1s infinite linear;
+        animation: load8 1.1s infinite linear;
 
-        display: grid;
 
-        min-width: 60px;
+        @-webkit-keyframes load8 {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
 
-        grid-template-columns: auto auto;
-        grid-template-rows: auto auto;
-        grid-row-gap: 1em;
-
-        .forecast-day-month {
-          text-align: left;
-
-          grid-column: 1;
-          grid-row: 1;
-
-          padding: 4px;
-          background: rgba(0, 0, 0, 0.05);
-          border: 1px solid rgba(0, 0, 0, 0.2);
-          border-right: none;
-          border-top-left-radius: 3px;
-          border-bottom-left-radius: 3px;
-          box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-            0 15px 40px rgba(166, 173, 201, 0.2);
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
         }
 
-        .forecast-year {
-          text-align: right;
+        @keyframes load8 {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
 
-          grid-column: 2;
-          grid-row: 1;
-
-          background: rgba(0, 0, 0, 0.07);
-          padding: 4px;
-          border: 1px solid rgba(0, 0, 0, 0.3);
-          border-top-right-radius: 3px;
-          border-bottom-right-radius: 3px;
-          box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-            0 15px 40px rgba(166, 173, 201, 0.2);
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
         }
-
-        .forecast-time {
-          text-align: left;
-
-          grid-column: 1;
-          grid-row: 2;
-          padding: 4px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(0, 0, 0, 0.2);
-          border-right: none;
-          border-top-left-radius: 3px;
-          border-bottom-left-radius: 3px;
-          box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-            0 15px 40px rgba(166, 173, 201, 0.2);
-        }
-
-        .forecast-day-of-week {
-          text-align: right;
-
-          grid-column: 2;
-          grid-row: 2;
-          background: rgba(255, 255, 255, 0.07);
-          padding: 4px;
-          border: 1px solid rgba(0, 0, 0, 0.3);
-          border-top-right-radius: 3px;
-          border-bottom-right-radius: 3px;
-          box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-            0 15px 40px rgba(166, 173, 201, 0.2);
-        }
-      }
-
-      .forecast-weather {
-        text-align: center;
-        flex-basis: 100px;
-      }
     }
-  }
+
+
+    .forecast-results {
+        display: flex;
+
+        padding: 0.5em 1em;
+
+        // border-top: 2px solid rgba(0, 0, 0, 0.7);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        background-color: whitesmoke;
+
+        justify-content: space-between;
+        align-items: center;
+
+        &:not(:first-of-type) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            border-top: none;
+        }
+
+        &:last-of-type {
+            border-top: none;
+            border-bottom: none;
+        }
+
+        &.results-table-view {
+            .forecast-left {
+                font-size: 10px;
+
+                display: grid;
+
+                min-width: 60px;
+
+                grid-template-columns: auto auto;
+                grid-template-rows: auto auto;
+                grid-row-gap: 1em;
+
+                .forecast-day-month {
+                    text-align: left;
+
+                    grid-column: 1;
+                    grid-row: 1;
+
+                    padding: 4px;
+                    background: rgba(0, 0, 0, 0.05);
+                    border: 1px solid rgba(0, 0, 0, 0.2);
+                    border-right: none;
+                    border-top-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+                    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+                        0 15px 40px rgba(166, 173, 201, 0.2);
+                }
+
+                .forecast-year {
+                    text-align: right;
+
+                    grid-column: 2;
+                    grid-row: 1;
+
+                    background: rgba(0, 0, 0, 0.07);
+                    padding: 4px;
+                    border: 1px solid rgba(0, 0, 0, 0.3);
+                    border-top-right-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+                        0 15px 40px rgba(166, 173, 201, 0.2);
+                }
+
+                .forecast-time {
+                    text-align: left;
+                    grid-column: 1;
+                    grid-row: 2;
+                    padding: 4px;
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid rgba(0, 0, 0, 0.2);
+                    border-right: none;
+                    border-top-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+                    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+                        0 15px 40px rgba(166, 173, 201, 0.2);
+                }
+
+                .forecast-day-of-week {
+                    text-align: right;
+
+                    grid-column: 2;
+                    grid-row: 2;
+                    background: rgba(255, 255, 255, 0.07);
+                    padding: 4px;
+                    border: 1px solid rgba(0, 0, 0, 0.3);
+                    border-top-right-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+                        0 15px 40px rgba(166, 173, 201, 0.2);
+                }
+            }
+
+            .forecast-weather {
+                text-align: center;
+                flex-basis: 100px;
+            }
+        }
+    }
 }

@@ -1,4 +1,5 @@
 // out: ../../dist/style/app.css, compress: true, strictMath: true
+
 @import (less) '../css/navbar.css';
 @import (less) '../css/footer.css';
 @import (less) '../css/home.css';
@@ -7,39 +8,35 @@
 @import (less) '../css/normalize.css';
 
 html {
-  width: 100vw;
-  height: 100vh;
+    width: 100vw;
+    height: 100vh;
 }
 
 body {
-  z-index: 0;
+    z-index: 0;
+    display: grid;
+    margin: 0 auto;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/60-lines.png') center center repeat;
+    background-color: rgba(0, 232, 155, 0.6);
 
-  display: grid;
-
-  height: 100%;
-  margin: 0 auto;
-
-  background: url('https://www.transparenttextures.com/patterns/60-lines.png')
-    center center repeat;
-  background-color: rgba(0, 232, 155, 0.6);
-
-  grid-auto-columns: auto;
-  grid-auto-rows: 50px 1fr;
+    grid-auto-columns: auto;
+    grid-auto-rows: 50px 1fr auto;
 }
 
 main {
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto;
+    margin: 0 auto;
+    max-width: 900px;
+    width: 100%;
 }
 
 .container {
-  background: rgba(255, 255, 255, 1);
-  border: 1px solid white;
-  border-radius: 2px;
-  padding: 0.5rem;
-  margin-top: 1rem;
-  width: 100%;
-  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-    0 15px 40px rgba(166, 173, 201, 0.2);
+    margin-top: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+        0 15px 40px rgba(166, 173, 201, 0.2);
 }
