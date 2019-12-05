@@ -6,7 +6,7 @@
 
 const weatherApp = angular.module('weatherApp', ['ngRoute', 'ngResource', 'leaflet-directive']);
 
-weatherApp.config(function ($routeProvider) {
+weatherApp.config(function($routeProvider) {
     $routeProvider
 
         .when('/', {
@@ -23,7 +23,7 @@ weatherApp.config(function ($routeProvider) {
 // Services for App "State"?
 weatherApp.service('stateService', [
     'geolocationSvc',
-    function (geolocationSvc) {
+    function(geolocationSvc) {
         const app = this;
         this.user = {
             username: 'Sean',
@@ -39,22 +39,18 @@ weatherApp.service('geolocationSvc', [
     '$q',
     '$window',
     '$log',
-    function ($q, $window, $log) {
+    function($q, $window, $log) {
         // this.mymap = L.map('map').setView([51.505, -0.09], 13);
-
         // this.getCurrentPosition = function() {
         //     function success(position) {
         //         const { latitude } = position.coords;
         //         const { longitude } = position.coords;
-
         //         const coords = { latitude, longitude };
         //         return coords;
         //     }
-
         //     function error() {
         //         $log.error('Unable to retrieve your location');
         //     }
-
         //     if (!navigator.geolocation) {
         //         $log.error('Geolocation is not supported by your browser');
         //     } else {
@@ -67,19 +63,17 @@ weatherApp.service('geolocationSvc', [
 
 // Custom Directives
 
-weatherApp.directive('navbar', function () {
+weatherApp.directive('navbar', function() {
     return {
         replace: 'E',
         templateUrl: 'web/directives/navbar.html',
-        replace: true,
     };
 });
 
-weatherApp.directive('footer', function () {
+weatherApp.directive('footer', function() {
     return {
         replace: 'E',
         templateUrl: 'web/directives/footer.html',
-        replace: true,
     };
 });
 
@@ -90,13 +84,13 @@ weatherApp.controller('homeController', [
     '$log',
     'stateService',
     'geolocationSvc',
-    function ($scope, $log, stateService, geolocationSvc) {
+    function($scope, $log, stateService, geolocationSvc) {
         $log.log('scope from Home', $scope);
 
         $scope.cityName = stateService.cityName;
         $scope.currentCity = stateService.currentCity;
 
-        $scope.$watch('cityName', function () {
+        $scope.$watch('cityName', function() {
             stateService.cityName = $scope.cityName;
             console.log(stateService);
         });
@@ -114,7 +108,7 @@ weatherApp.controller('forecastController', [
     '$log',
     '$resource',
     'stateService',
-    function ($scope, $log, $resource, stateService) {
+    function($scope, $log, $resource, stateService) {
         const weatherEndpoint = 'http://api.openweathermap.org/data/2.5/forecast';
 
         $log.log('scope from Forecast', $scope);
@@ -122,9 +116,11 @@ weatherApp.controller('forecastController', [
         $scope.cityName = stateService.cityName;
 
         $scope.weatherAPI = $resource(
-            weatherEndpoint, {
+            weatherEndpoint,
+            {
                 callback: 'JSON_CALLBACK',
-            }, {
+            },
+            {
                 get: {
                     method: 'JSONP',
                 },
@@ -137,17 +133,17 @@ weatherApp.controller('forecastController', [
             appid: '4bdd42e99d3c216e6c5b942b88dbfd15',
         });
 
-        $log.log($scope.weatherResult)
+        $log.log($scope.weatherResult);
 
-        $scope.convertToFahrenheit = function (degK) {
+        $scope.convertToFahrenheit = function(degK) {
             return Math.round(1.8 * (degK - 273) + 32);
         };
 
-        $scope.makeIconUrl = function (iconId) {
+        $scope.makeIconUrl = function(iconId) {
             return `http://openweathermap.org/img/w/${iconId}.png`;
-        }
+        };
 
-        $scope.convertToDate = function (dt) {
+        $scope.convertToDate = function(dt) {
             return new Date(dt * 1000);
         };
     },
@@ -155,12 +151,12 @@ weatherApp.controller('forecastController', [
 
 weatherApp.controller('mapController', [
     '$scope',
-    function ($scope) {
+    function($scope) {
         angular.extend($scope, {
             center: {
                 lat: 47.60917214635615,
                 lng: -122.25311279296876,
-                zoom: 12
+                zoom: 12,
             },
             defaults: {
                 scrollWheelZoom: false,

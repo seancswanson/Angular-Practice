@@ -1,18 +1,20 @@
-<h1 class="page-heading">Trihoral Forecast for {{ cityName }}</h1>
-
-<div class="view-toggle-container">
+<div class="page-heading">
+  <h1>Trihoral Forecast for {{ cityName }}</h1>
+  <div class="view-toggle-container">
     <div class="button table-view selected">
-        <div class="table-icon view-icon"></div>
-        <div class="table-label">Table View</div>
+      <div class="table-icon view-icon"></div>
+      <div class="table-label">Table View</div>
     </div>
     <div class="button grid-view">
-        <div class="grid-icon view-icon"></div>
-        <div class="grid-label">Grid View</div>
+      <div class="grid-icon view-icon"></div>
+      <div class="grid-label">Grid View</div>
     </div>
+  </div>
 </div>
+
 <div class="forecast-results-container container">
-    <div ng-if="!weatherResult.$resolved" class="forecast-loader"></div>
-    <!--
+  <div ng-if="!weatherResult.$resolved" class="forecast-loader"></div>
+  <!--
     <div class="forecast-results">
         <div>Date</div>
         <div class="forecast-weather">Weather</div>
@@ -21,33 +23,38 @@
         <div>Temp. Hi/Lo</div>
     </div>
 -->
-    <div class="forecast-results results-table-view" ng-repeat="weather in weatherResult.list">
-        <div class="forecast-left">
-            <div class="forecast-day-month">
-                {{ convertToDate(weather.dt) | date: 'd MMM' }}
-            </div>
-            <div class="forecast-year">
-                '{{ convertToDate(weather.dt) | date: 'yy' }}
-            </div>
-            <div class="forecast-time">
-                {{ convertToDate(weather.dt) | date: 'h a' }}
-            </div>
-            <div class="forecast-day-of-week">
-                {{ convertToDate(weather.dt) | date: 'EEE' }}
-            </div>
-        </div>
-        <div class="forecast-weather">{{ weather.weather[0].main }}</div>
-        <div class="forecast-weather"><img ng-src="{{ makeIconUrl(weather.weather[0].icon) }}" alt=""></div>
-        <div class="forecast-temp-primary">
-            {{ convertToFahrenheit(weather.main.temp) }}
-        </div>
-        <div class="forecast-temp-secondary">
-            <div class="forecast-temp-high">HI
-                {{ convertToFahrenheit(weather.main.temp_max) }}
-            </div>
-            <div class="forecast-temp-low">LO
-                {{ convertToFahrenheit(weather.main.temp_min) }}
-            </div>
-        </div>
+  <div
+    class="forecast-results results-table-view"
+    ng-repeat="weather in weatherResult.list"
+  >
+    <div class="forecast-left">
+      <div class="forecast-day-month">
+        {{ convertToDate(weather.dt) | date: 'd MMM' }}
+      </div>
+      <div class="forecast-year">
+        '{{ convertToDate(weather.dt) | date: 'yy' }}
+      </div>
+      <div class="forecast-time">
+        {{ convertToDate(weather.dt) | date: 'h a' }}
+      </div>
+      <div class="forecast-day-of-week">
+        {{ convertToDate(weather.dt) | date: 'EEE' }}
+      </div>
     </div>
+    <div class="forecast-weather">{{ weather.weather[0].main }}</div>
+    <div class="forecast-weather">
+      <img ng-src="{{ makeIconUrl(weather.weather[0].icon) }}" alt="" />
+    </div>
+    <div class="forecast-temp-primary">
+      {{ convertToFahrenheit(weather.main.temp) }}
+    </div>
+    <div class="forecast-temp-secondary">
+      <div class="forecast-temp-high">
+        HI {{ convertToFahrenheit(weather.main.temp_max) }}
+      </div>
+      <div class="forecast-temp-low">
+        LO {{ convertToFahrenheit(weather.main.temp_min) }}
+      </div>
+    </div>
+  </div>
 </div>
