@@ -1,0 +1,50 @@
+{
+  "city": {
+    "coord": {
+      "lat": 47.6038,
+      "lon": -122.3301
+    },
+    "country": "US",
+    "id": 5809844,
+    "name": "Seattle",
+    "population": 608660,
+    "sunrise": 1575733412,
+    "sunset": 1575764299,
+    "timezone": -28800
+  },
+  "cnt": 7,
+  "cod": "200",
+  "list": [
+    {
+      "clouds": {
+        "all": 100
+      }
+      "dt": 1575774000
+      "main": {
+        "grnd_level": 1001,
+        "humidity": 93,
+        "pressure": 1009,
+        "sea_level": 1009,
+        "temp": 281.54,
+        "temp_kf": -0.15,
+        "temp_max": 281.69,
+        "temp_min": 281.54
+      }
+    }
+  ],
+  "sys": {
+    "pod": "n"
+  },
+  "weather": [
+    {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04n"
+    }
+  ],
+  "wind": {
+    "speed": 0.92,
+    "deg": 215
+  }
+}

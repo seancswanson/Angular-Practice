@@ -70,7 +70,7 @@ weatherApp.directive('navbar', function() {
     };
 });
 
-weatherApp.directive('footer', function() {
+weatherApp.directive('myFooter', function() {
     return {
         replace: 'E',
         templateUrl: 'web/directives/footer.html',
@@ -109,31 +109,58 @@ weatherApp.controller('forecastController', [
     '$resource',
     'stateService',
     function($scope, $log, $resource, stateService) {
-        const weatherEndpoint = 'http://api.openweathermap.org/data/2.5/forecast';
+        $scope.endpoints = [
+            'http://api.openweathermap.org/data/2.5/weather',
+            'http://api.openweathermap.org/data/2.5/forecast',
+        ];
+
+        $scope.apiServices = {
+            weatherResult: $resource(
+                $scope.endpoints[0],
+                {
+                    callback: 'JSON_CALLBACK',
+                },
+                {
+                    get: {
+                        method: 'JSONP',
+                    },
+                }
+            ),
+            forecastResult: $resource(
+                $scope.endpoints[1],
+                {
+                    callback: 'JSON_CALLBACK',
+                },
+                {
+                    get: {
+                        method: 'JSONP',
+                    },
+                }
+            ),
+        };
+
+        $scope.items = [];
+
+        $log.log('before', $scope.items[0], $scope.items[1]);
 
         $log.log('scope from Forecast', $scope);
 
         $scope.cityName = stateService.cityName;
 
-        $scope.weatherAPI = $resource(
-            weatherEndpoint,
-            {
-                callback: 'JSON_CALLBACK',
-            },
-            {
-                get: {
-                    method: 'JSONP',
-                },
+        $scope.getData = (function() {
+            for (const apiService in $scope.apiServices) {
+                if (Object.prototype.hasOwnProperty.call($scope.apiServices, apiService)) {
+                    const result = $scope.apiServices[apiService].get({
+                        q: $scope.cityName,
+                        cnt: 7,
+                        appid: '4bdd42e99d3c216e6c5b942b88dbfd15',
+                    });
+                    $scope.items.push(result);
+                    $log.log($scope.items[0], $scope.items[1]);
+                }
             }
-        );
-
-        $scope.weatherResult = $scope.weatherAPI.get({
-            q: $scope.cityName,
-            cnt: 7,
-            appid: '4bdd42e99d3c216e6c5b942b88dbfd15',
-        });
-
-        $log.log($scope.weatherResult);
+        })();
+        $log.log('after', $scope.items[0], $scope.items[1]);
 
         $scope.convertToFahrenheit = function(degK) {
             return Math.round(1.8 * (degK - 273) + 32);
