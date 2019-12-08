@@ -1,5 +1,25 @@
 <div class="page-heading">
-  <h1>Trihoral Forecast for {{ cityName }}</h1>
+  <h1>Today's Forecast for {{ city.name || 'Seattle' }}</h1>
+  <div class="date-container">
+    <div class="left">
+      <div class="top">{{ (currentDay | date: 'MMMdd') }}</div>
+      <div class="bottom">{{ currentDay | date: '&nbsp;y' }}</div>
+    </div>
+    <div class="right">
+      <div class="top">{{ currentDay | date: 'h:' }}</div>
+      <div class="bottom">{{ (currentDay | date: 'mma').toLowerCase() }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="forecast-results-container container">
+  <div ng-if="items[0].$resolved" class="loader">
+    <div ng-if="false" class="forecast-results"></div>
+  </div>
+</div>
+
+<div class="trihoral-heading">
+  <h1>Trihoral Forecast</h1>
   <div class="view-toggle-container">
     <div class="button table-view selected">
       <div class="table-icon view-icon"></div>
@@ -13,7 +33,7 @@
 </div>
 
 <div class="forecast-results-container container">
-  <div ng-if="!items[0].$resolved" class="loader"></div>
+  <div ng-if="!items[1].$resolved" class="loader"></div>
   <!--
     <div class="forecast-results">
         <div>Date</div>

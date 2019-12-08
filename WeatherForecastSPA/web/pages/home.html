@@ -1,12 +1,10 @@
 <div class="home-container">
   <div class="map-container container" ng-controller="mapController">
-    <form>
-      Latitude :
-      <input type="number" step="any" ng-model="center.lat" /> Longitude :
-      <input type="number" step="any" ng-model="center.lng" /> Zoom :
-      <input type="number" step="any" ng-model="center.zoom" />
-    </form>
-    <leaflet id="map" center="center"></leaflet>
+    <leaflet
+      id="map"
+      center="center"
+      ng-click="updateCoords(this.center)"
+    ></leaflet>
   </div>
   <!-- <h2 ng-model="currentLocation">
     It looks like you are located at {{ currentLocation.latitude }}
@@ -20,8 +18,9 @@
         type="text"
         class="location-input"
         placeholder="Seattle, NYC, Chicago..."
-        ng-model="cityName"
+        ng-model="city"
       />
+      <div class="coordinates-button" ng-click="applyMapCoords(this)"></div>
     </div>
     <div class="bottom">
       <a href="#/forecast" class="button button--primary" ng-click="setCity()"

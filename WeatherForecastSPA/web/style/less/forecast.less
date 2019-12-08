@@ -1,5 +1,4 @@
 // out: ../css/forecast.css, compress: true, strictMath: true
-
 .page-heading {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -9,7 +8,45 @@
   align-content: center;
 
   h1 {
-    display: flex;
+    background: white;
+    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+      0 15px 40px rgba(166, 173, 201, 0.2);
+    padding-left: 0.6rem;
+    margin: 0;
+    height: 82px;
+    line-height: 82px;
+    border: 1px solid white;
+    border-radius: 2px;
+    white-space: nowrap;
+    overflow: scroll;
+  }
+
+  .date-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Major Mono Display', monospace;
+    font-size: 22px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid white;
+    border-radius: 2px;
+    padding: 0.5rem;
+    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+      0 15px 40px rgba(166, 173, 201, 0.2);
+  }
+}
+.trihoral-heading {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 0.5rem;
+  margin-top: 1rem;
+  // justify-content: space-between;
+  align-content: center;
+
+  h1 {
     background: white;
     box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
       0 15px 40px rgba(166, 173, 201, 0.2);
@@ -85,7 +122,7 @@
     }
   }
 
-  @media screen and (max-width: 680px) {
+  @media screen and (max-width: 920px) {
     width: 98vw;
     grid-template-columns: 1fr;
     row-gap: 0.5rem;
@@ -147,7 +184,7 @@
     }
   }
 
-  @media screen and (max-width: 680px) {
+  @media screen and (max-width: 920px) {
     width: 98vw;
     margin: 1rem auto 0 auto;
   }
