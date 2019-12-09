@@ -13,8 +13,27 @@
 </div>
 
 <div class="forecast-results-container container">
-    <div ng-if="items[0].$resolved" class="loader">
-        <div ng-if="false" class="forecast-results"></div>
+    <div ng-if="!items[0].$resolved" class="loader">
+    </div>
+    <div ng-if="items[0].$resolved" class="current-results">
+        <div class="top">
+            <div class="left">
+                <div class="icon">
+                    <i class="owf" ng-class="isNight(items[0].dt) ? 'owf-' + items[0].weather[0].id + '-n owf-5x' : 'owf-'+items[0].weather[0].id + ' owf-5x'"></i>
+                </div>
+                <div class="temp"> {{ convertToFahrenheit(items[0].main.temp) }}</div>
+                <div class="description">{{ items[0].weather[0].description }}</div>
+            </div>
+            <div class="right">
+                <div class="wind">Wind Speed: {{ items[0].wind.speed }}</div>
+                <div class="pressure">Air Pressure: {{ items[0].main.pressure }}</div>
+                <div class="humidity">Humidity: {{ items[0].main.humidity }}</div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="sunrise">Sunrise: {{ convertToDate(items[0].sys.sunrise) | date: 'h:m a' }}</div>
+            <div class="sunset">Sunset: {{ convertToDate(items[0].sys.sunset) | date: 'h:m a' }}</div>
+        </div>
     </div>
 </div>
 
