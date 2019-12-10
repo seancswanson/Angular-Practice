@@ -202,19 +202,27 @@
 
         align-items: center;
 
-        font-size: 30px;
+        font-size: 24px;
 
         .top {
             display: grid;
             grid-template-columns: 1fr 1fr;
             align-items: center;
             text-align: center;
+
+            .left {
+                border-right: 1px solid #eee;
+            }
         }
 
         .bottom {
             display: flex;
+            margin: 1rem auto 0 auto;
+            height: 100%;
+            width: 75%;
+            align-items: center;
             justify-content: space-around;
-
+            border-top: 1px solid #eee;
         }
     }
 

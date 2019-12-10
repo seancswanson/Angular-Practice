@@ -71,6 +71,14 @@ weatherApp.directive('navbar', function () {
     return {
         replace: 'E',
         templateUrl: 'web/directives/navbar.html',
+        scope: true,
+        controller: function ($scope, $element) {
+            $scope.toggleMenu = function () {
+                const menu = document.querySelector('.navbar-right');
+                menu.classList.toggle('shown');
+                console.log(menu);
+            };
+        }
     };
 });
 
