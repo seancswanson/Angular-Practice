@@ -227,8 +227,6 @@
     }
 
     .forecast-results {
-        display: flex;
-
         margin: 0.33rem;
         padding: 0.5em 1em;
 
@@ -238,8 +236,6 @@
         border-radius: 3px;
         // border: 2px solid rgba(34, 78, 63, 0.04);
 
-        justify-content: space-between;
-        align-items: center;
 
         &:not(:first-of-type) {}
 
@@ -247,83 +243,91 @@
             border-top: none;
             border-bottom: none;
         }
+    }
 
-        &.results-table-view {
-            .forecast-left {
-                font-size: 10px;
+    &.results-table-view {
+        .forecast-results {
+            display: flex;
 
-                display: grid;
 
-                min-width: 60px;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-                grid-template-columns: auto auto;
-                grid-template-rows: auto auto;
-                grid-row-gap: 1em;
+        .forecast-left {
+            font-size: 10px;
 
-                .forecast-day-month {
-                    text-align: left;
+            display: grid;
 
-                    grid-column: 1;
-                    grid-row: 1;
+            min-width: 60px;
 
-                    padding: 4px;
-                    background: rgba(0, 0, 0, 0.05);
-                    border: 1px solid rgba(0, 0, 0, 0.2);
-                    border-right: none;
-                    border-top-left-radius: 3px;
-                    border-bottom-left-radius: 3px;
-                    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-                        0 15px 40px rgba(166, 173, 201, 0.2);
-                }
+            grid-template-columns: auto auto;
+            grid-template-rows: auto auto;
+            grid-row-gap: 1em;
 
-                .forecast-year {
-                    text-align: right;
+            .forecast-day-month {
+                text-align: left;
 
-                    grid-column: 2;
-                    grid-row: 1;
+                grid-column: 1;
+                grid-row: 1;
 
-                    background: rgba(0, 0, 0, 0.07);
-                    padding: 4px;
-                    border: 1px solid rgba(0, 0, 0, 0.3);
-                    border-top-right-radius: 3px;
-                    border-bottom-right-radius: 3px;
-                    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-                        0 15px 40px rgba(166, 173, 201, 0.2);
-                }
-
-                .forecast-time {
-                    text-align: left;
-                    grid-column: 1;
-                    grid-row: 2;
-                    padding: 4px;
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid rgba(0, 0, 0, 0.2);
-                    border-right: none;
-                    border-top-left-radius: 3px;
-                    border-bottom-left-radius: 3px;
-                    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-                        0 15px 40px rgba(166, 173, 201, 0.2);
-                }
-
-                .forecast-day-of-week {
-                    text-align: right;
-
-                    grid-column: 2;
-                    grid-row: 2;
-                    background: rgba(255, 255, 255, 0.07);
-                    padding: 4px;
-                    border: 1px solid rgba(0, 0, 0, 0.3);
-                    border-top-right-radius: 3px;
-                    border-bottom-right-radius: 3px;
-                    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-                        0 15px 40px rgba(166, 173, 201, 0.2);
-                }
+                padding: 4px;
+                background: rgba(0, 0, 0, 0.05);
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-right: none;
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+                box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+                    0 15px 40px rgba(166, 173, 201, 0.2);
             }
 
-            .forecast-weather {
-                text-align: center;
-                flex-basis: 100px;
+            .forecast-year {
+                text-align: right;
+
+                grid-column: 2;
+                grid-row: 1;
+
+                background: rgba(0, 0, 0, 0.07);
+                padding: 4px;
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+                box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+                    0 15px 40px rgba(166, 173, 201, 0.2);
             }
+
+            .forecast-time {
+                text-align: left;
+                grid-column: 1;
+                grid-row: 2;
+                padding: 4px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-right: none;
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+                box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+                    0 15px 40px rgba(166, 173, 201, 0.2);
+            }
+
+            .forecast-day-of-week {
+                text-align: right;
+
+                grid-column: 2;
+                grid-row: 2;
+                background: rgba(255, 255, 255, 0.07);
+                padding: 4px;
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+                box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+                    0 15px 40px rgba(166, 173, 201, 0.2);
+            }
+        }
+
+        .forecast-weather {
+            text-align: center;
+            flex-basis: 100px;
         }
     }
 }
