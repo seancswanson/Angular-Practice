@@ -212,6 +212,22 @@
 
             .left {
                 border-right: 1px solid #eee;
+
+                .description:first-letter {
+                    text-transform: uppercase;
+                }
+            }
+
+            .right {
+                div {
+                    display: grid;
+                    grid-template-columns: 140px 80px;
+                    justify-content: center;
+
+                    span {
+                        text-align: left;
+                    }
+                }
             }
         }
 
