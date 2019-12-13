@@ -74,7 +74,7 @@ weatherApp.directive('navbar', function () {
         scope: true,
         controller: function ($scope, $element) {
             $scope.toggleMenu = function () {
-                const menu = document.querySelector('.navbar-right');
+                const menu = document.querySelector('.navbar-mobile');
                 menu.classList.toggle('shown');
                 console.log(menu);
             };
