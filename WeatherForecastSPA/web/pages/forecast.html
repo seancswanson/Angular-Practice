@@ -1,4 +1,10 @@
-<div class="page-heading">
+<div ng-if="items[0].$promise.$$state.status === 2" class="error container">
+  <div class="sorry">I'm so sorry!</div>
+  <div>I couldn't find the weather for that location.</div>
+  <a href="#/explore" class="button button--primary">Explore</a>
+</div>
+
+<div class="page-heading" ng-if="items[0].$promise.$$state.status === 1">
   <h1>Today's Forecast for {{ city.name || 'Seattle' }}</h1>
   <div class="date-container">
     <div class="left">
@@ -12,7 +18,10 @@
   </div>
 </div>
 
-<div class="forecast-results-container container">
+<div
+  ng-if="items[0].$promise.$$state.status === 1"
+  class="forecast-results-container container"
+>
   <div ng-if="!items[0].$resolved" class="loader"></div>
   <div ng-if="items[0].$resolved" class="current-results">
     <div class="top">
@@ -51,7 +60,7 @@
   </div>
 </div>
 
-<div class="trihoral-heading">
+<div class="trihoral-heading" ng-if="items[0].$promise.$$state.status === 1">
   <h1>Trihoral Forecast</h1>
   <div class="view-toggle-container">
     <div class="button table-view selected" ng-click="applyTableView()">
@@ -67,6 +76,7 @@
 
 <div
   class="trihoral-results-container forecast-results-container results-table-view container"
+  ng-if="items[0].$promise.$$state.status === 1"
 >
   <div ng-if="!items[1].$resolved" class="loader"></div>
   <!--

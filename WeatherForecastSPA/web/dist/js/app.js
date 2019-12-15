@@ -14,6 +14,11 @@ weatherApp.config(function($routeProvider) {
             controller: 'homeController',
         })
 
+        .when('/explore', {
+            templateUrl: 'web/pages/home.html',
+            controller: 'homeController',
+        })
+
         .when('/forecast', {
             templateUrl: 'web/pages/forecast.html',
             controller: 'forecastController',
@@ -112,6 +117,21 @@ weatherApp.controller('homeController', [
                 });
         };
 
+        $scope.setCity = function() {
+            if (!$scope.city) {
+                const errorMessage = document.querySelector('.error-message');
+                errorMessage.addEventListener('click', function() {
+                    errorMessage.classList.toggle('shown');
+                });
+                errorMessage.classList.toggle('shown');
+                setTimeout(function() {
+                    errorMessage.classList.remove('shown');
+                }, 5000);
+                return;
+            }
+            window.location.href = '#/forecast';
+        };
+
         $scope.$watch('city', function() {
             stateService.city = {
                 name: $scope.city,
@@ -169,7 +189,7 @@ weatherApp.controller('forecastController', [
             for (const apiService in $scope.apiServices) {
                 if (Object.prototype.hasOwnProperty.call($scope.apiServices, apiService)) {
                     const result = $scope.apiServices[apiService].get({
-                        q: $scope.city.name || 'Seattle',
+                        q: $scope.city.name,
                         cnt: 7,
                         appid: '4bdd42e99d3c216e6c5b942b88dbfd15',
                     });
@@ -177,6 +197,7 @@ weatherApp.controller('forecastController', [
                 }
             }
         })();
+
         const tableViewButton = document.querySelector('.table-view');
         const gridViewButton = document.querySelector('.grid-view');
         const forecastResultsContainer = document.querySelector('.trihoral-results-container');
@@ -258,6 +279,9 @@ weatherApp.controller('mapController', [
     },
 ]);
 
-weatherApp.controller('contactController', [$scope, function($scope) {
-    console.log('contact!';)
-}]);
+weatherApp.controller('contactController', [
+    '$scope',
+    function($scope) {
+        console.log('contact!');
+    },
+]);

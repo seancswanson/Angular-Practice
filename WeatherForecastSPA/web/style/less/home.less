@@ -21,6 +21,13 @@
     }
   }
 
+  .coordinates-button {
+    background: url(./map.png) center center no-repeat;
+    background-size: cover;
+    height: 24px;
+    width: 24px;
+  }
+
   .input-container {
     position: relative;
     // display: grid;
@@ -56,10 +63,6 @@
       .coordinates-button {
         position: absolute;
         right: 1rem;
-        background: url(./map.png) center center no-repeat;
-        background-size: cover;
-        height: 24px;
-        width: 24px;
       }
 
       @media screen and (max-width: 900px) {
@@ -70,6 +73,51 @@
     .bottom {
       margin-top: 1rem;
       height: 40px;
+    }
+  }
+}
+
+.error-message {
+  position: absolute;
+  top: 40px;
+  right: -50px;
+  height: 0px;
+  width: 35vw;
+  height: 0px;
+  opacity: 0;
+  text-align: center;
+  transition: all cubic-bezier(0.311, 0.441, 0.444, 1.1) 0.3s;
+  border: 3px solid rgba(255, 255, 255, 0.5) !important;
+  z-index: 999;
+  overflow: hidden;
+
+  .close-button {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    border-radius: 100%;
+    color: black;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: all linear 0.2s;
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+
+  &.shown {
+    right: 0;
+    height: auto;
+    opacity: 1;
+    color: #d8000c;
+    background-color: #ffd2d2;
+    .coordinates-button {
+      display: inline-block !important;
+      height: 17px;
+      width: 17px;
     }
   }
 }

@@ -1,20 +1,42 @@
 <div class="home-container">
-    <div class="map-container container" ng-controller="mapController">
-        <leaflet id="map" center="center" ng-mousedown="updateCoords(this.center)"></leaflet>
-    </div>
-    <!-- <h2 ng-model="currentLocation">
+  <div class="map-container container" ng-controller="mapController">
+    <leaflet
+      id="map"
+      center="center"
+      ng-mousedown="updateCoords(this.center)"
+    ></leaflet>
+  </div>
+  <!-- <h2 ng-model="currentLocation">
     It looks like you are located at {{ currentLocation.latitude }}
   </h2>
   <div ng-click="getCurrentLocation()">Get it!</div> -->
 
-    <div class="input-container container">
-        <div class="top">
-            <h1>Show me the weather for...</h1>
-            <input type="text" class="location-input" placeholder="Seattle, NYC, Chicago..." ng-model="city" />
-            <div class="coordinates-button" ng-click="applyMapCoords(this)"></div>
-        </div>
-        <div class="bottom">
-            <a href="#/forecast" class="button button--primary" ng-click="setCity()">Get Forecast</a>
-        </div>
+  <div class="input-container container">
+    <div class="top">
+      <h1>Show me the weather for...</h1>
+      <input
+        type="text"
+        class="location-input"
+        placeholder="Seattle, NYC, Chicago..."
+        ng-model="city"
+      />
+      <div class="coordinates-button" ng-click="applyMapCoords()"></div>
     </div>
+    <div class="bottom">
+      <div class="button button--primary" ng-click="setCity()">
+        Get Forecast
+      </div>
+    </div>
+  </div>
+  <div class="error-message container">
+    <div>
+      Please enter the name of a city.
+    </div>
+    <div>
+      Using the map, you can navigate to a location and click
+      <div class="coordinates-button"></div>
+      to grab the city name from the current coordinates.
+    </div>
+    <div class="close-button">&times;</div>
+  </div>
 </div>
