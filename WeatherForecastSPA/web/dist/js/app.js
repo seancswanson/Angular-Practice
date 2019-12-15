@@ -6,7 +6,7 @@
 
 const weatherApp = angular.module('weatherApp', ['ngRoute', 'ngResource', 'leaflet-directive']);
 
-weatherApp.config(function ($routeProvider) {
+weatherApp.config(function($routeProvider) {
     $routeProvider
 
         .when('/', {
@@ -20,13 +20,13 @@ weatherApp.config(function ($routeProvider) {
         });
 });
 
-// Services for App "State"?
+// Service for App "State"
 weatherApp.service('stateService', [
-    'geolocationSvc',
-    function (geolocationSvc) {
+    function() {
         this.user = {
             username: 'Sean',
         };
+
         this.currentDay = Date.now();
 
         this.currentCoords = {
@@ -35,54 +35,26 @@ weatherApp.service('stateService', [
             zoom: 12,
             // autoDiscover: true,
         };
-        // this.currentLocation = geolocationSvc.getCurrentPosition();
-    },
-]);
-
-weatherApp.service('geolocationSvc', [
-    '$q',
-    '$window',
-    '$log',
-    function ($q, $window, $log) {
-        // this.mymap = L.map('map').setView([51.505, -0.09], 13);
-        // this.getCurrentPosition = function() {
-        //     function success(position) {
-        //         const { latitude } = position.coords;
-        //         const { longitude } = position.coords;
-        //         const coords = { latitude, longitude };
-        //         return coords;
-        //     }
-        //     function error() {
-        //         $log.error('Unable to retrieve your location');
-        //     }
-        //     if (!navigator.geolocation) {
-        //         $log.error('Geolocation is not supported by your browser');
-        //     } else {
-        //         $log.log('Locating…');
-        //         navigator.geolocation.getCurrentPosition(success, error);
-        //     }
-        // };
     },
 ]);
 
 // Custom Directives
 
-weatherApp.directive('navbar', function () {
+weatherApp.directive('navbar', function() {
     return {
         replace: 'E',
         templateUrl: 'web/directives/navbar.html',
         scope: true,
-        controller: function ($scope, $element) {
-            $scope.toggleMenu = function () {
+        controller($scope) {
+            $scope.toggleMenu = function() {
                 const menu = document.querySelector('.navbar-mobile');
                 menu.classList.toggle('shown');
-                console.log(menu);
             };
-        }
+        },
     };
 });
 
-weatherApp.directive('myFooter', function () {
+weatherApp.directive('myFooter', function() {
     return {
         replace: true,
         templateUrl: 'web/directives/footer.html',
@@ -94,22 +66,47 @@ weatherApp.directive('myFooter', function () {
 weatherApp.controller('homeController', [
     '$scope',
     '$log',
+    '$resource',
     'stateService',
-    'geolocationSvc',
-    function ($scope, $log, stateService, geolocationSvc) {
-        $scope.applyMapCoords = function (args) {
-            $scope.currentCoords = stateService.currentCoords;
-            stateService.city = {
-                isCoordinate: true,
-                name: `${$scope.currentCoords.lat},${$scope.currentCoords.lng}`,
-            };
-            // $log.log($scope.city, 'home/scope');
-            $log.log(stateService.currentCoords, 'home/state');
+    function($scope, $log, $resource, stateService) {
+        $scope.items = [];
+
+        $scope.endpoints = ['http://api.openweathermap.org/data/2.5/weather'];
+
+        $scope.apiServices = {
+            coordResult: $resource(
+                $scope.endpoints[0],
+                {
+                    callback: 'JSON_CALLBACK',
+                },
+                {
+                    get: {
+                        method: 'JSONP',
+                    },
+                }
+            ),
         };
 
-        $scope.$watch('city', function () {
+        $scope.applyMapCoords = function() {
+            $log.log(stateService.currentCoords, 'applyMapCoords');
+            $scope.currentCoords = stateService.currentCoords;
+
+            $scope.apiServices.coordResult
+                .get({
+                    lat: $scope.currentCoords.lat,
+                    lon: $scope.currentCoords.lng,
+                    cnt: 0,
+                    appid: '4bdd42e99d3c216e6c5b942b88dbfd15',
+                })
+                .$promise.then(function(args) {
+                    $scope.items.push(args.name);
+                    $log.log($scope.items);
+                    $scope.city = $scope.items[$scope.items.length - 1];
+                });
+        };
+
+        $scope.$watch('city', function() {
             stateService.city = {
-                isCoordinate: false,
                 name: $scope.city,
             };
         });
@@ -122,7 +119,7 @@ weatherApp.controller('forecastController', [
     '$resource',
     '$filter',
     'stateService',
-    function ($scope, $log, $resource, $filter, stateService) {
+    function($scope, $log, $resource, $filter, stateService) {
         $scope.items = [];
 
         $scope.endpoints = [
@@ -132,18 +129,22 @@ weatherApp.controller('forecastController', [
 
         $scope.apiServices = {
             weatherResult: $resource(
-                $scope.endpoints[0], {
+                $scope.endpoints[0],
+                {
                     callback: 'JSON_CALLBACK',
-                }, {
+                },
+                {
                     get: {
                         method: 'JSONP',
                     },
                 }
             ),
             forecastResult: $resource(
-                $scope.endpoints[1], {
+                $scope.endpoints[1],
+                {
                     callback: 'JSON_CALLBACK',
-                }, {
+                },
+                {
                     get: {
                         method: 'JSONP',
                     },
@@ -152,13 +153,12 @@ weatherApp.controller('forecastController', [
         };
 
         $scope.city = stateService.city || {
-            name: 'Seattle'
+            name: 'Seattle',
         };
 
         $scope.currentDay = stateService.currentDay;
 
-        $scope.getData = (function () {
-            $log.log($scope, 'scope after get');
+        $scope.getData = (function() {
             for (const apiService in $scope.apiServices) {
                 if (Object.prototype.hasOwnProperty.call($scope.apiServices, apiService)) {
                     const result = $scope.apiServices[apiService].get({
@@ -167,30 +167,29 @@ weatherApp.controller('forecastController', [
                         appid: '4bdd42e99d3c216e6c5b942b88dbfd15',
                     });
                     $scope.items.push(result);
-                    $log.log($scope.items[0], $scope.items[1]);
                 }
             }
         })();
 
         $log.log('Full payload', $scope.items[0], $scope.items[1]);
 
-        $scope.convertToFahrenheit = function (degK) {
+        $scope.convertToFahrenheit = function(degK) {
             return Math.round(1.8 * (degK - 273) + 32);
         };
 
-        $scope.makeIconUrl = function (iconId) {
+        $scope.makeIconUrl = function(iconId) {
             return `http://openweathermap.org/img/w/${iconId}.png`;
         };
 
-        $scope.convertToDate = function (dt) {
+        $scope.convertToDate = function(dt) {
             return new Date(dt * 1000);
         };
 
-        $scope.isNight = function (dt) {
+        $scope.isDarkOut = function(dt) {
             const time = $filter('date')($scope.convertToDate(dt), 'h');
             const isPm = $filter('date')(time, 'a') === 'PM';
-            return time > 8 && isPm;
-        }
+            return time > 8 && isPm && time === 12 && isPm && time < 4 && !isPm;
+        };
     },
 ]);
 
@@ -198,7 +197,7 @@ weatherApp.controller('mapController', [
     '$scope',
     'stateService',
     '$log',
-    function ($scope, stateService, $log) {
+    function($scope, stateService, $log) {
         $scope.center = {
             lat: 47.60917214635615,
             lng: -122.25311279296876,
@@ -209,7 +208,7 @@ weatherApp.controller('mapController', [
             scrollWheelZoom: false,
         };
 
-        $scope.updateCoords = function (args) {
+        $scope.updateCoords = function(args) {
             $scope.center = {
                 lat: args.lat,
                 lng: args.lng,
