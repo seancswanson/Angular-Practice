@@ -17,6 +17,11 @@ weatherApp.config(function($routeProvider) {
         .when('/forecast', {
             templateUrl: 'web/pages/forecast.html',
             controller: 'forecastController',
+        })
+
+        .when('/contact', {
+            templateUrl: 'web/pages/contact.html',
+            controller: 'contactController',
         });
 });
 
@@ -45,7 +50,9 @@ weatherApp.directive('navbar', function() {
         replace: 'E',
         templateUrl: 'web/directives/navbar.html',
         scope: true,
-        controller($scope) {
+        controller: function($scope, $element) { // eslint-disable-line
+            // Why can't the above line work with the shorthand syntax for declaring a function as a property?
+            // Eslint needed to be disable to keep functionality.
             $scope.toggleMenu = function() {
                 const menu = document.querySelector('.navbar-mobile');
                 menu.classList.toggle('shown');
@@ -170,6 +177,31 @@ weatherApp.controller('forecastController', [
                 }
             }
         })();
+        const tableViewButton = document.querySelector('.table-view');
+        const gridViewButton = document.querySelector('.grid-view');
+        const forecastResultsContainer = document.querySelector('.trihoral-results-container');
+
+        $scope.applyGridView = function(e) {
+            $log.log(e);
+            if (forecastResultsContainer.classList.contains('results-grid-view')) {
+                return;
+            }
+
+            forecastResultsContainer.classList.toggle('results-grid-view');
+            forecastResultsContainer.classList.toggle('results-table-view');
+            tableViewButton.classList.remove('selected');
+            gridViewButton.classList.add('selected');
+        };
+
+        $scope.applyTableView = function() {
+            if (forecastResultsContainer.classList.contains('results-table-view')) {
+                return;
+            }
+            forecastResultsContainer.classList.toggle('results-grid-view');
+            forecastResultsContainer.classList.toggle('results-table-view');
+            gridViewButton.classList.remove('selected');
+            tableViewButton.classList.add('selected');
+        };
 
         $log.log('Full payload', $scope.items[0], $scope.items[1]);
 
@@ -225,3 +257,7 @@ weatherApp.controller('mapController', [
         };
     },
 ]);
+
+weatherApp.controller('contactController', [$scope, function($scope) {
+    console.log('contact!';)
+}]);
