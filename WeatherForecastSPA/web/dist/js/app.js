@@ -99,6 +99,13 @@ weatherApp.controller('homeController', [
             ),
         };
 
+        $scope.locationInput = document.querySelector('.location-input');
+        $scope.locationInput.addEventListener('keydown', function(event) {
+            if (event.which === 13 && $scope.city !== '') {
+                $scope.setCity();
+            }
+        });
+
         $scope.applyMapCoords = function() {
             $log.log(stateService.currentCoords, 'applyMapCoords');
             $scope.currentCoords = stateService.currentCoords;
@@ -139,6 +146,12 @@ weatherApp.controller('homeController', [
         });
     },
 ]);
+
+// weatherApp.directive('submitInput', function() {
+//     return function(scope, element, attrs) {
+//         console.log(element);
+//     };
+// });
 
 weatherApp.controller('forecastController', [
     '$scope',
@@ -198,12 +211,11 @@ weatherApp.controller('forecastController', [
             }
         })();
 
-        const tableViewButton = document.querySelector('.table-view');
-        const gridViewButton = document.querySelector('.grid-view');
-        const forecastResultsContainer = document.querySelector('.trihoral-results-container');
-
-        $scope.applyGridView = function(e) {
-            $log.log(e);
+        $scope.applyGridView = function() {
+            const tableViewButton = document.querySelector('.table-view');
+            const gridViewButton = document.querySelector('.grid-view');
+            const forecastResultsContainer = document.querySelector('.trihoral-results-container');
+            $log.log('clicked', forecastResultsContainer);
             if (forecastResultsContainer.classList.contains('results-grid-view')) {
                 return;
             }
@@ -215,6 +227,10 @@ weatherApp.controller('forecastController', [
         };
 
         $scope.applyTableView = function() {
+            const tableViewButton = document.querySelector('.table-view');
+            const gridViewButton = document.querySelector('.grid-view');
+            const forecastResultsContainer = document.querySelector('.trihoral-results-container');
+
             if (forecastResultsContainer.classList.contains('results-table-view')) {
                 return;
             }

@@ -39,13 +39,16 @@
       </div>
       <div class="right">
         <div class="wind">
-          <span>Wind Speed:</span> {{ items[0].wind.speed }}
+          <div>Wind Speed:</div>
+          <div>{{ items[0].wind.speed }}</div>
         </div>
         <div class="pressure">
-          <span>Air Pressure:</span> {{ items[0].main.pressure }}
+          <div>Air Pressure:</div>
+          <div>{{ items[0].main.pressure }}</div>
         </div>
         <div class="humidity">
-          <span>Humidity:</span> {{ items[0].main.humidity }}
+          <div>Humidity:</div>
+          <div>{{ items[0].main.humidity }}</div>
         </div>
       </div>
     </div>
@@ -123,5 +126,5 @@
       </div>
     </div>
   </div>
-  <div class="forecast-results placeholder">☀️</div>
+  <div class="forecast-results placeholder">End of results</div>
 </div>
