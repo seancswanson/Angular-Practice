@@ -295,9 +295,4 @@ weatherApp.controller('mapController', [
     },
 ]);
 
-weatherApp.controller('contactController', [
-    '$scope',
-    function($scope) {
-        console.log('contact!');
-    },
-]);
+weatherApp.controller('contactController', ['$scope', function($scope) {}]);
